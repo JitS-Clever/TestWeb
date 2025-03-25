@@ -7,18 +7,65 @@
     <link rel="stylesheet" href="css/inappstyles.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/auth.js"></script>
 
 </head>
 <body>
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-container">
+            <div id="loginFormHeader">
+                <h2>Get access to Template Showcase</h2>
+                <p>To get started, please enter your email.</p>
+            </div>
+            <div id="loginForm">
+                <div class="form-group mb-3">
+                    <label for="emailInput">Work Email <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="emailInput" placeholder="your@email.com" required>
+                </div>
+                <button class="btn btn-warning btn-lg" onclick="checkAccess()">Sign In</button>
+            </div>
+            
+            <div id="requestAccessForm" style="display: none;">
+                <h3>Request Access</h3>
+                <p>Please provide the following details to get access to Template Showcase.</p>
+                <div class="form-group mb-2">
+                    <label for="nameInput">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nameInput" placeholder="John Doe" required>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="companyInput">Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="companyInput" placeholder="Your company name" required>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="jobTitleInput">Job Title <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="jobTitleInput" placeholder="Your job role" required>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="pocInput">Point of Contact <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="pocInput" placeholder="Your contact at our company" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="requestEmailInput">Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="requestEmailInput" required>
+                </div>
+                <button class="btn btn-warning" onclick="requestAccess()">Submit Request</button>
+                <button class="btn btn-light" onclick="showLoginForm()">Back to Login</button>
+            </div>
+        </div>
+    </div>
     <header>
         <div class="navbar">
             <div class="logo">TemplateShowcase</div>
-            <div class="nav-links">
+            <!-- <div class="nav-links">
                 <a href="#">HTML Code</a>
                 <a href="#">Mobile View</a>
-            </div>
+            </div> -->
             <div class="nav-right">
-                <a href="#">Template Selection</a>
+                <div id="userInfo" style="display: none;">
+                    <span id="userEmail" class="user-email"></span>
+                    <button class="btn btn-sm btn-outline-light" onclick="logout()">Logout</button>
+                </div>
+                <!-- <a href="#">Template Selection</a> -->
             </div>
         </div>
     </header>
