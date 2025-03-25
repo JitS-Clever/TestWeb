@@ -18,9 +18,7 @@ const templates = [
     { id: "e9", name: "Stories V2", function: fetchData },
     { id: "e10", name: "Scratch Card", function: fetchData },
     { id: "e11", name: "Copy Coupon Code", function: fetchData },
-    { id: "e12", name: "Spin Wheel", function: fetchData },
-    { id: "e13", name: "Spin Wheel (Multiple)", function: fetchData }
-
+    { id: "e12", name: "Spin Wheel", function: fetchData }
 ];
 
 function startLoader() {
