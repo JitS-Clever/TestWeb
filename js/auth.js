@@ -116,11 +116,58 @@ function showLoginForm() {
 
 // Submit access request
 async function requestAccess() {
-    const name = document.getElementById('nameInput').value.trim();
-    const email = document.getElementById('requestEmailInput').value.trim();
-    const company = document.getElementById('companyInput').value.trim();
-    const poc = document.getElementById('pocInput').value.trim();
-    const jobTitle = document.getElementById('jobTitleInput').value.trim();
+    // Get all the required inputs
+    const nameInput = document.getElementById('nameInput');
+    const companyInput = document.getElementById('companyInput');
+    const jobTitleInput = document.getElementById('jobTitleInput');
+    const pocInput = document.getElementById('pocInput');
+    const emailInput = document.getElementById('requestEmailInput');
+    
+    // Reset previous validations
+    nameInput.classList.remove('is-invalid');
+    companyInput.classList.remove('is-invalid');
+    jobTitleInput.classList.remove('is-invalid');
+    pocInput.classList.remove('is-invalid');
+    
+    // Check validations
+    let isValid = true;
+    
+    const namePattern = /^[A-Za-z\s\.\-]+$/;
+    if (!nameInput.value.trim() || !namePattern.test(nameInput.value.trim())) {
+        nameInput.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    if (!companyInput.value.trim()) {
+        companyInput.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    if (!jobTitleInput.value.trim()) {
+        jobTitleInput.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // Email validation for Point of Contact
+    if (!pocInput.value.trim() || !validateEmail(pocInput.value.trim())) {
+        pocInput.classList.add('is-invalid');
+        isValid = false;
+    }
+    
+    // If validation fails, stop processing
+    if (!isValid) {
+        console.log("Form validation failed");
+        return;
+    }
+    
+    // If validation passes, continue with form submission
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const company = companyInput.value.trim();
+    const poc = pocInput.value.trim();
+    const jobTitle = jobTitleInput.value.trim();
+    
+    showLoading(true);
         
     try {
         // Same URL building logic
