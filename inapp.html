@@ -22,7 +22,9 @@
                     <label for="emailInput">Work Email <span class="text-danger">*</span></label>
                     <input type="email" class="form-control" id="emailInput" placeholder="your@email.com" required>
                 </div>
-                <button class="btn btn-warning btn-lg" onclick="checkAccess()">Sign In</button>
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-warning" onclick="checkAccess()">Sign In</button>
+                </div>
             </div>
             
             <div id="requestAccessForm" style="display: none;">
@@ -54,8 +56,10 @@
                     <label for="requestEmailInput">Email Address <span class="text-danger">*</span></label>
                     <input type="email" class="form-control disabled-field" id="requestEmailInput" disabled>
                 </div>
-                <button class="btn btn-warning" onclick="requestAccess()">Submit Request</button>
-                <button class="btn btn-light" onclick="showLoginForm()">Back to Login</button>
+                <div class="d-flex justify-content-between mt-3">
+                    <button class="btn btn-light" onclick="showLoginForm()">Back to Login</button>
+                    <button class="btn btn-warning" onclick="requestAccess()">Submit Request</button>
+                </div>
             </div>
         </div>
     </div>
