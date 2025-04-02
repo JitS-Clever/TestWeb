@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Showcase</title>
     <link rel="stylesheet" href="css/inappstyles.css">
+    <link rel="stylesheet" href="css/editor.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs/loader.min.js"></script>
+
 
 </head>
 <body>
@@ -107,16 +111,21 @@
                         </div>
                 </div>
                 <div class="col-md-4">
-                    <section class="phone-preview">
+                    <div class="phone-preview-wrapper">
+                    <section class="phone-preview" id="phonePreview">
+                        <button id="floatToggleBtn" class="float-toggle-btn" title="Toggle floating mode">
+                            📌
+                        </button>
                         <div class="phone-frame">
                             <div class="device-container">
-                            <iframe id="codeIframe" src="about:blank" class="iframe"></iframe>
+                                <iframe id="codeIframe" src="about:blank" class="iframe"></iframe>
                             </div>
                         </div>
-                          <div class="preview-notification">
+                        <div class="preview-notification">
                             This preview does not support in-app closure and redirection but the code works well with real world devices.
-                           </div>
+                        </div>
                     </section>
+                    </div>
                 </div>
             </div>
         </div>
