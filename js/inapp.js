@@ -849,6 +849,8 @@ function loadIframe(template) {
   }, 100);
 }
 
+// Replace your codeBuilder function with this version to work with the external editor
+
 function codeBuilder(isPreview = false, previewData = null) {
   let processedCode = templateCode;
 
@@ -909,6 +911,370 @@ function codeBuilder(isPreview = false, previewData = null) {
   if (!isPreview) {
     const codeBlock = document.getElementById("codeBlock");
     codeBlock.value = processedCode;
+
+    // Update Monaco editor using the external function if available
+    if (window.updateEditorContent) {
+      window.updateEditorContent(processedCode);
+    }
   }
-  loadIframe(processedCode);
+  
+  // Use the external loadIframe function if available, otherwise fall back
+  if (window.loadIframe) {
+    window.loadIframe(processedCode);
+  } else {
+    loadIframeInternal(processedCode);
+  }
 }
+
+// Keep a simple internal implementation as fallback
+function loadIframeInternal(template) {
+  // Basic fallback implementation...
+  const iframe = document.getElementById("codeIframe");
+  
+  const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+  iframeDoc.open();
+  iframeDoc.write(template || document.getElementById("codeBlock").value);
+  iframeDoc.close();
+}
+
+// Update the document ready function 
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize float toggle functionality
+  initFloatToggle();
+  });
+// Update the initFloatToggle function
+// Update the initFloatToggle function
+// Update the initFloatToggle function
+function initFloatToggle() {
+  const toggleBtn = document.getElementById('floatToggleBtn');
+  const phonePreview = document.getElementById('phonePreview');
+  
+  if (!toggleBtn || !phonePreview) return;
+  
+  // Create simple tooltip with enhanced wording
+  const tooltip = document.createElement('div');
+  tooltip.className = 'float-tooltip';
+  tooltip.textContent = '✨ Click to float this preview';
+  phonePreview.appendChild(tooltip);
+  
+  // Load saved state from localStorage if available
+  const isFloating = localStorage.getItem('phonePreviewFloating') === 'true';
+  const hasUsedFloatFeature = localStorage.getItem('hasUsedFloatFeature') === 'true';
+  
+  if (isFloating) {
+    phonePreview.classList.add('phone-floating');
+    toggleBtn.textContent = '📍';
+    toggleBtn.title = 'Dock preview';
+    tooltip.style.display = 'none'; // Hide tooltip when already floating
+  } else if (hasUsedFloatFeature) {
+    // Hide tooltip if user has used the feature before
+    tooltip.style.display = 'none';
+  } else {
+    toggleBtn.textContent = '📌';
+    toggleBtn.title = 'Float preview';
+    // Show tooltip for new users
+    tooltip.style.display = 'block';
+    
+    // Add a timeout to hide the tooltip after some time if not interacted with
+    setTimeout(() => {
+      // Only hide if still showing and not yet used
+      if (!localStorage.getItem('hasUsedFloatFeature') === 'true') {
+        // Fade out gracefully
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(-10px)';
+        // Remove completely after animation completes
+        setTimeout(() => {
+          tooltip.style.display = 'none';
+        }, 300);
+      }
+    }, 10000); // Hide after 10 seconds if not used
+  }
+  
+  toggleBtn.addEventListener('click', function() {
+    phonePreview.classList.toggle('phone-floating');
+    
+    // Hide tooltip permanently after first use
+    tooltip.style.display = 'none';
+    localStorage.setItem('hasUsedFloatFeature', 'true');
+    
+    if (phonePreview.classList.contains('phone-floating')) {
+      toggleBtn.textContent = '📍';
+      toggleBtn.title = 'Dock preview';
+      localStorage.setItem('phonePreviewFloating', 'true');
+    } else {
+      toggleBtn.textContent = '📌';
+      toggleBtn.title = 'Float preview';
+      localStorage.setItem('phonePreviewFloating', 'false');
+    }
+  });
+}
+// // Add this after your existing initFloatToggle function
+
+// let monacoEditor = null;
+
+// function initMonacoEditor() {
+//   // Add a loading indicator
+//   const monacoContainer = document.createElement('div');
+//   monacoContainer.id = 'monacoContainer';
+//   monacoContainer.className = 'monaco-container';
+//   // monacoContainer.innerHTML = '<div class="editor-loading">Loading code editor...</div>';
+  
+//   // Insert the container before the existing textarea
+//   const codeBlock = document.getElementById('codeBlock');
+//   codeBlock.parentNode.insertBefore(monacoContainer, codeBlock);
+  
+//   // Hide the original textarea
+//   codeBlock.style.display = 'none';
+  
+//   // Wait for Monaco to load
+//   require.config({ 
+//     paths: { 
+//       'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs' 
+//     }
+//   });
+  
+//   require(['vs/editor/editor.main'], function() {
+//     // Set up editor with HTML language support and comfortable settings
+//     monacoEditor = monaco.editor.create(document.getElementById('monacoContainer'), {
+//       value: codeBlock.value,
+//       language: 'html',
+//       theme: 'vs-dark',
+//       automaticLayout: true,
+//       fontSize: 14,
+//       lineNumbers: 'on',
+//       minimap: { enabled: true },
+//       scrollBeyondLastLine: false,
+//       folding: true,
+//       formatOnPaste: true,
+//       wordWrap: 'on',
+//       renderWhitespace: 'boundary',
+//       bracketPairColorization: { enabled: true },
+//       autoIndent: 'full',
+//       scrollbar: {
+//         verticalScrollbarSize: 12,
+//         horizontalScrollbarSize: 12,
+//         alwaysConsumeMouseWheel: false
+//       }
+//     });
+    
+//     // When the editor content changes, update the hidden textarea
+//     monacoEditor.onDidChangeModelContent(function() {
+//       document.getElementById('codeBlock').value = monacoEditor.getValue();
+//     });
+    
+//     // Add extra commands for better usability
+//     monacoEditor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, function() {
+//       loadIframe(); // Ctrl+S to preview
+//     });
+    
+//     // Add resize handle for better UX
+//     addEditorResizeHandle(monacoContainer);
+//   });
+// }
+
+// // Allow users to resize the editor height
+// function addEditorResizeHandle(editorContainer) {
+//   const resizeHandle = document.createElement('div');
+//   resizeHandle.className = 'editor-resize-handle';
+//   resizeHandle.innerHTML = '<span></span><span></span><span></span>';
+//   editorContainer.parentNode.insertBefore(resizeHandle, editorContainer.nextSibling);
+  
+//   let startY, startHeight;
+  
+//   resizeHandle.addEventListener('mousedown', function(e) {
+//     startY = e.clientY;
+//     startHeight = parseInt(document.defaultView.getComputedStyle(editorContainer).height, 10);
+//     document.documentElement.style.cursor = 'ns-resize';
+    
+//     document.addEventListener('mousemove', resizeMove);
+//     document.addEventListener('mouseup', resizeEnd);
+    
+//     e.preventDefault();
+//   });
+  
+//   function resizeMove(e) {
+//     const newHeight = startHeight + e.clientY - startY;
+//     if (newHeight > 200) { // Minimum height
+//       editorContainer.style.height = newHeight + 'px';
+//       if (monacoEditor) monacoEditor.layout();
+//     }
+//   }
+  
+//   function resizeEnd() {
+//     document.documentElement.style.cursor = '';
+//     document.removeEventListener('mousemove', resizeMove);
+//     document.removeEventListener('mouseup', resizeEnd);
+//   }
+// }
+
+// // Enhanced copy function that uses the editor if available
+// function copyCode() {
+//   const code = monacoEditor 
+//     ? monacoEditor.getValue() 
+//     : document.getElementById("codeBlock").value;
+    
+//   navigator.clipboard
+//     .writeText(code)
+//     .then(() => {
+//       // Show a more elegant notification
+//       showNotification("Code copied to clipboard!", "success");
+//     })
+//     .catch((err) => {
+//       console.error("Failed to copy: ", err);
+//       showNotification("Failed to copy code", "error");
+//     });
+// }
+
+// // Format the code in the editor
+// function formatCode() {
+//   if (monacoEditor) {
+//     monacoEditor.getAction('editor.action.formatDocument').run();
+//     showNotification("Code formatted", "success");
+//   }
+// }
+
+// // Enhanced loadIframe to use Monaco editor
+// function loadIframe(template) {
+//   // Get from editor if no template is provided
+//   if (!template && monacoEditor) {
+//     template = monacoEditor.getValue();
+//   }
+  
+//   // Get reference to the existing iframe
+//   const iframe = document.getElementById("codeIframe");
+  
+//   // Create a unique name to prevent caching issues
+//   const uniqueName = 'iframe_' + Date.now();
+  
+//   // Create a new iframe element
+//   const newIframe = document.createElement('iframe');
+//   newIframe.id = "codeIframe";
+//   newIframe.className = iframe.className;
+//   newIframe.style.cssText = iframe.style.cssText;
+  
+//   // Replace the old iframe with the new one
+//   iframe.parentNode.replaceChild(newIframe, iframe);
+  
+//   // Write content to the new iframe
+//   const iframeDoc = newIframe.contentDocument || newIframe.contentWindow.document;
+  
+//   if (template) {
+//     iframeDoc.open();
+//     iframeDoc.write(template);
+//     iframeDoc.close();
+//   } else {
+//     // Otherwise use what's in the code block
+//     const codeBlock = document.getElementById("codeBlock");
+//     iframeDoc.open();
+//     iframeDoc.write(codeBlock.value);
+//     iframeDoc.close();
+//   }
+  
+//   // Show success notification
+//   showNotification("Preview updated", "info");
+  
+//   // Rest of your existing code for iframe scaling...
+//   setTimeout(() => {
+//     // Calculate the scaling factor based on content size vs iframe size
+//     const content = iframeDoc.body;
+//     const contentWidth = content.scrollWidth;
+//     const contentHeight = content.scrollHeight;
+//     const frameWidth = iframe.clientWidth;
+//     const frameHeight = iframe.clientHeight;
+    
+//     // Determine which dimension requires more scaling
+//     const scaleX = frameWidth / contentWidth;
+//     const scaleY = frameHeight / contentHeight;
+//     const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+    
+//     // Apply the transform
+//     iframe.style.transform = `scale(${scale})`;
+    
+//     // If the content is smaller than the frame, center it
+//     if (scale === 1) {
+//       const xOffset = (frameWidth - contentWidth) / 2;
+//       const yOffset = (frameHeight - contentHeight) / 2;
+//       iframe.style.left = xOffset > 0 ? `${xOffset}px` : '0';
+//       iframe.style.top = yOffset > 0 ? `${yOffset}px` : '0';
+//     } else {
+//       iframe.style.left = '0';
+//       iframe.style.top = '0';
+//     }
+//   }, 100);
+// }
+
+// // Elegant notification system
+// function showNotification(message, type = 'info') {
+//   // Remove any existing notifications
+//   const existingNotifications = document.querySelectorAll('.code-notification');
+//   existingNotifications.forEach(notification => {
+//     notification.remove();
+//   });
+  
+//   // Create notification element
+//   const notification = document.createElement('div');
+//   notification.className = `code-notification ${type}`;
+//   notification.innerHTML = `<span>${message}</span>`;
+  
+//   // Add to document
+//   document.body.appendChild(notification);
+  
+//   // Animate in
+//   setTimeout(() => {
+//     notification.classList.add('show');
+//   }, 10);
+  
+//   // Remove after delay
+//   setTimeout(() => {
+//     notification.classList.remove('show');
+//     setTimeout(() => {
+//       notification.remove();
+//     }, 300);
+//   }, 3000);
+// }
+
+// // Update the document ready function to initialize everything
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Initialize float toggle functionality
+//   initFloatToggle();
+  
+//   // Initialize Monaco Editor
+//   initMonacoEditor();
+  
+//   // Add the editor toolbar
+//   addEditorToolbar();
+// });
+
+// // Add a toolbar for the editor with useful operations
+// function addEditorToolbar() {
+//   const codeContainer = document.querySelector('.code-container');
+//   const codeHeader = document.querySelector('.code-header');
+  
+//   // Clear existing header content
+//   codeHeader.innerHTML = '';
+  
+//   // Create the new toolbar
+//   const toolbarItems = [
+//     { label: 'HTML Editor', type: 'title' },
+//     { label: 'Format', action: 'formatCode', icon: '⚙️' },
+//     { label: 'Copy', action: 'copyCode', icon: '📋' },
+//     { label: 'Preview', action: 'loadIframe', icon: '👁️' }
+//   ];
+  
+//   toolbarItems.forEach(item => {
+//     if (item.type === 'title') {
+//       const title = document.createElement('span');
+//       title.className = 'editor-title';
+//       title.textContent = item.label;
+//       codeHeader.appendChild(title);
+//     } else {
+//       const button = document.createElement('button');
+//       button.className = `${item.action}-btn editor-btn`;
+//       button.innerHTML = `${item.icon} ${item.label}`;
+//       button.onclick = function() {
+//         window[item.action]();
+//       };
+//       codeHeader.appendChild(button);
+//     }
+//   });
+// }

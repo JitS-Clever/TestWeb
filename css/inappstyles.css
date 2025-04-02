@@ -800,3 +800,132 @@ body.user-logged-in #loginOverlay {
   color: #6c757d !important;
   border: 1px solid #ced4da !important;
 }
+
+.phone-preview-wrapper {
+  position: sticky;
+  top: 2.5px;
+  height: fit-content;
+}
+
+/* Floating preview mode */
+.phone-floating {
+  position: fixed !important; /* Add !important to override any other positioning */
+  bottom: 20px !important;
+  right: 20px !important;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 20px 10px 10px 10px; /* Extra padding on top for the button */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  transform: scale(0.7);
+  transform-origin: bottom right;
+  transition: all 0.3s ease;
+  max-width: max-content; /* Ensure it doesn't expand wider than needed */
+}
+
+.phone-floating .phone-frame {
+  margin: 0;
+  border-width: 8px;
+}
+
+.phone-floating .preview-notification {
+  display: none;
+}
+
+/* Improved float toggle button styling */
+.float-toggle-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Position when in floating mode */
+.phone-floating .float-toggle-btn {
+  top: 5px;
+  right: 5px;
+}
+
+/* Make sure the phone preview container has position: relative */
+.phone-preview {
+  position: relative;
+}
+
+.float-toggle-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  background-color: #ffdb58; /* Slightly brighter gold on hover */
+}
+
+/* Add active state for better feedback */
+.float-toggle-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced float tooltip with visual attraction */
+.float-tooltip {
+  position: absolute;
+  top: -38px;
+  right: -10px;
+  background: linear-gradient(145deg, var(--color-dark), var(--color-darker));
+  color: var(--color-light);
+  padding: 8px 14px;
+  border-radius: var(--border-radius-sm);
+  font-size: 12px;
+  box-shadow: var(--box-shadow-md), 0 0 5px rgba(255, 215, 0, 0.15);
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-left: 3px solid var(--color-accent);
+  font-weight: 500;
+  opacity: 1;
+  transition: var(--transition-standard);
+  transform-origin: bottom right;
+  animation: pulseTooltip 2s ease-in-out infinite;
+}
+
+/* Animated pulsing to attract attention */
+@keyframes pulseTooltip {
+  0%, 100% { transform: translateY(0); box-shadow: var(--box-shadow-sm), 0 0 5px rgba(255, 215, 0, 0.15); }
+  50% { transform: translateY(-3px); box-shadow: var(--box-shadow-md), 0 0 8px rgba(255, 215, 0, 0.3); }
+}
+
+/* Improved arrow styling */
+.float-tooltip:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 16px;
+  width: 16px;
+  height: 8px;
+  background-color: transparent;
+  box-shadow: var(--box-shadow-sm);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background-color: var(--color-dark);
+}
+
+/* Special style when in floating mode */
+.phone-floating .float-tooltip {
+  display: none;
+}
+
+/* Add a slight delay when showing the tooltip on hover to avoid flickering */
+.float-toggle-btn:hover + .float-tooltip {
+  opacity: 1;
+  animation-play-state: paused;
+  transform: translateY(0);
+}
