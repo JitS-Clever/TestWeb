@@ -95,16 +95,16 @@
 .preview-notification {
     border-radius: 0.5rem;
     width: 375px;
-    padding: 15px;
+    padding: 8px;
     text-align: center;
-    background-color: #ffcc00;
+    background-color: #FFCC00;
     color: #000000;
-    border: 1px solid #bee5eb;
-    font-size: 16px;
+    border: 1px solid #BEE5EB;
+    font-size: 12.5px;
     margin: auto;
     margin-top: 15px;
     overflow: hidden;
-    position: relative; 
+    position: relative;
 }
 
 .phone-frame {
