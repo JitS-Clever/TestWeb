@@ -7,12 +7,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
-<link href="/TestWeb/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="manifest" href="/TestWeb/json/manifest.json">
 <link rel="stylesheet" href="/TestWeb/css/main.css">
+<script type="text/javascript" src="/TestWeb/js/main.js"></script>
+<link rel="stylesheet" href="/TestWeb/css/bootstrap.min.css" >
 
 <script type="text/javascript">
     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
@@ -112,7 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#engagement" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Web Push</a>
     <a href="#engagement" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Web Pop-up</a>
     <a href="#extras" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Extras</a>
-    <a href="/inapp.html" class="w3-bar-item btn-warning w3-hide-small w3-padding-large w3-hover-white w3-right">In-App Templates</a>
+    <a href="/TestWeb/inapp.html" class="w3-bar-item btn-warning w3-hide-small w3-padding-large w3-hover-white w3-right">In-App Templates</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -122,19 +124,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#engagement" class="w3-bar-item w3-button w3-padding-large">Web Push</a>
     <a href="#engagement" class="w3-bar-item w3-button w3-padding-large">Web Pop-up</a>
     <a href="#extras" class="w3-bar-item w3-button w3-padding-large">Extras</a>
-    <a href="/inapp.html" class="w3-bar-item btn-warning w3-padding-large w3-right w3-hover-white">In-App Templates</a>
+    <a href="/TestWeb/inapp.html" class="w3-bar-item btn-warning w3-padding-large w3-right w3-hover-white">In-App Templates</a>
   </div>
 </div>
 
+
+<!-- Carousel Section for Jio  -->
 <section id="topCarousel" class=" mt-5 p-5">
-  <div id="carouselExampleDark" class="carousel" data-bs-ride="carousel">
+  <div id="carouselDark" class="carousel" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="3000">
+      <div class="carousel-item active">
         <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/tab-banner1-0ct-24.webp" class="carouseljit" alt="...">
         <div class="carouselcaption">
           <h1 style="font-weight:900;">Exclusive Corporate Postpaid Plans</h5>
@@ -142,7 +146,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="button" class="carouselbtn" value="Click Here">
         </div>
       </div>
-      <div class="carousel-item" data-bs-interval="3000">
+      <div class="carousel-item" >
         <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/managed-wi-fi-Tablet.webp" class="carouseljit" alt="...">
         <div class="carouselcaptiontl">
           <h1 style="font-weight:900;">Enterprise-Grade Managed Wi-Fi</h5>
@@ -267,6 +271,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
+
+<!-- FAQ Section -->
+
+<section class="faq-section">
+  <h1><b>Still have questions?</b></h1>
+  <p style="text-align: center;">Find answers to some of the commonly asked questions about CleverTap by our customers.</p>
+
+  <div class="faq-category">Retention Offerings</div>
+
+  <div class="accordion">
+    <div class="accordionitem">
+      <button class="accordion-header">What is CleverTap?</button>
+      <div class="accordion-body">
+        <p><b>Understand Customers for Life | </b>Engage customers for life with the industry’s only platform that limitlessly analyzes data from every source, all at once.</p>
+      </div>
+    </div>
+    <div class="accordionitem">
+      <button class="accordion-header">What does it help me with ?</button>
+      <div class="accordion-body">
+        <p><b>Personalize Every Experience | </b>Inspire confident decisions with memorable, personal experiences for brand love, loyalty and advocacy.</p>
+      </div>
+    </div>
+    <div class="accordionitem">
+      <button class="accordion-header">What services we expect ?</button>
+      <div class="accordion-body">
+        <p><b>All-In-One Platform that Unifies | </b>Bring together people, processes, and technology to deliver unified customer experiences.</p>
+      </div>
+    </div>
+    <!-- Add more questions similarly -->
+  </div>
+</section>
+
 
 <!-- Third Grid -->
 
@@ -443,9 +479,15 @@ function myFunction() {
     x.className = x.className.replace(" w3-show", "");
   }
 }
+
+
+var myCarousel = document.querySelector('#carouselDark')
+var carousel = new bootstrap.Carousel(myCarousel, {
+  interval: 2000,
+  wrap: true
+})
 </script>
 <script src="/js/clevertap_sw.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 </body>
