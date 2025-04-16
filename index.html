@@ -6,31 +6,25 @@
 <title>JS | Clevertap</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="manifest" href="/TestWeb/json/manifest.json">
+<link rel="stylesheet" href="/css/main.css">
 
 <script type="text/javascript">
-  if(window.Clevertap){}
-  else {
     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
     clevertap.account.push({"id": "75R-654-5Z6Z"});
     clevertap.privacy.push({optOut: false}); 
     clevertap.privacy.push({useIP: true});
     clevertap.dismissSpamControl = true;
-
-    var clevertap2 = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
-    clevertap2.account.push({"id": "65R-654-5Z6Z"});
-    clevertap2.privacy.push({optOut: false}); 
-    clevertap2.privacy.push({useIP: true});
-    clevertap2.dismissSpamControl = true;
     (function () {
         var wzrk = document.createElement('script');
         wzrk.type = 'text/javascript';
         wzrk.async = true;
-        wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+        wzrk.src="https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js";
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wzrk, s);
     })();
@@ -57,24 +51,6 @@ else{
   clevertap.event.push("Page Viewed");
 }
 
-    var props = {foo: 'xyz', lang: 'French'};
-var message = { action:'recordEventWithProps', event:'Product Viewed', properties: props};
-if(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.JFSCT){
- // Call iOS interface       
-  window.webkit.messageHandlers.JFSCT.postMessage(message);
-  console.log(message);
-} 
-
-    clevertap.notifications.push({
-    "titleText":'Would you like to receive Push Notifications Jitendra?',
-    "bodyText":'We promise to only send you relevant content and give you updates on your transactions',
-    "okButtonText":'Hell YEah!',
-    "rejectButtonText":'No thanks',
-    "okButtonColor":'#f28046',
-    "askAgainTimeInSeconds":10,
-    "serviceWorkerPath":'/TestWeb/js/clevertap_sw.js'
-    });
-
     navigator.permissions.query({name: 'notifications'}).then(function(permission) {  
     // Initial status is available at permission.state
 
@@ -97,24 +73,25 @@ if(window.webkit && window.webkit.messageHandlers && window.webkit.messageHandle
       }
     };
     });
-  }
 </script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 </style>
-  <!-- Google Tag Manager -->
-  
+
+<!-- Google Tag Manager -->  
   <script>
-window.dataLayer = window.dataLayer || [];
-</script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
   
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5SLRV86');</script>
+<script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5SLRV86');
+</script>
 <!-- End Google Tag Manager -->
 
 </head>
@@ -135,6 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#engagement" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Web Push</a>
     <a href="#engagement" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Web Pop-up</a>
     <a href="#extras" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Extras</a>
+    <a href="/inapp.html" class="w3-bar-item btn-warning w3-hide-small w3-padding-large w3-hover-white w3-right">In-App Templates</a>
   </div>
 
   <!-- Navbar on small screens -->
@@ -144,8 +122,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#engagement" class="w3-bar-item w3-button w3-padding-large">Web Push</a>
     <a href="#engagement" class="w3-bar-item w3-button w3-padding-large">Web Pop-up</a>
     <a href="#extras" class="w3-bar-item w3-button w3-padding-large">Extras</a>
+    <a href="/inapp.html" class="w3-bar-item btn-warning w3-padding-large w3-right w3-hover-white">In-App Templates</a>
   </div>
 </div>
+
+<section id="topCarousel" class=" mt-5 p-5">
+  <div id="carouselExampleDark" class="carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="3000">
+        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/tab-banner1-0ct-24.webp" class="carouseljit" alt="...">
+        <div class="carouselcaption">
+          <h1 style="font-weight:900;">Exclusive Corporate Postpaid Plans</h5>
+          <p>With Unlimited 5G and Data rollover benefits.</p>
+          <input type="button" class="carouselbtn" value="Click Here">
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="3000">
+        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/managed-wi-fi-Tablet.webp" class="carouseljit" alt="...">
+        <div class="carouselcaptiontl">
+          <h1 style="font-weight:900;">Enterprise-Grade Managed Wi-Fi</h5>
+          <p>Reliable, Secure, and Scalable Connectivity for your Business</p>
+          <input type="button" class="carouselbtn" value="Click Here">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/new-july24-banner1-tab.webp" class="carouseljit" alt="...">
+        <div class="carouselcaptiontl">
+          <h1 style="font-weight:900;">GrowNet Solutions for growing business</h5>
+          <p>Secure and managed connectivity services tailored for enterprises.</p>
+          <input type="button" class="carouselbtn" value="Click Here">
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</section>
 
 <!-- Header -->
 <header id="jumboTron" class="w3-container w3-red w3-center" style="padding:128px 16px">
@@ -389,7 +412,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Copied and Used by Jitendra Sahoo For CT testing.</p>
 <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
-<script type="text/javascript" src="/TestWeb/js/jit.js" async></script>
+<script type="text/javascript" src="/js/jit.js" async></script>
   <script>
         // Tabs
         function openLink(evt, linkName) {
@@ -421,7 +444,8 @@ function myFunction() {
   }
 }
 </script>
-<script src="/TestWeb/js/clevertap_sw.js"></script>
+<script src="/js/clevertap_sw.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 
 </body>
