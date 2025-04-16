@@ -122,7 +122,7 @@
     transform: rotate(180deg);
   }
   
-  .accordion-body {
+  .accordionbody {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
@@ -131,7 +131,7 @@
     color: #555;
   }
   
-  .accordion-body p {
+  .accordionbody p {
     margin-bottom: 16px;
   }
   

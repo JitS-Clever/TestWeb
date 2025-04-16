@@ -740,6 +740,7 @@ function processDynamicFormData(dynamicContent) {
 
 async function fetchData(templateName) {
   const url = `https://v5ffl5exja.execute-api.ap-south-1.amazonaws.com/prod?inappTemplate=${templateName}`;
+
   try {
     startLoader();
     const response = await fetch(url, {
