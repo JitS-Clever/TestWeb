@@ -1,5 +1,28 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+  const searchParams = new URLSearchParams("key1=value1&key2=value2");
+
+  // Log the values
+  searchParams.forEach((value, key) => {
+    console.log(value, key);
+  });
+
+  const url = new URL(document.location).searchParams;
+  console.log(url);
+  var pageDict = {PageName:"Home"};
+  url.forEach((value, key) => {
+    pageDict[key] = value;
+    console.log(value, key);
+  });
+
+  if(pageDict != null)
+  {
+    clevertap.event.push("Page Viewed", pageDict);
+  }
+  else{
+    clevertap.event.push("Page Viewed");
+  }
+
     document.querySelectorAll('.accordion-header').forEach(button => {
       button.addEventListener('click', () => {
         const isActive = button.classList.contains('active');

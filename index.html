@@ -31,27 +31,6 @@
         s.parentNode.insertBefore(wzrk, s);
     })();
 
-    const searchParams = new URLSearchParams("key1=value1&key2=value2");
-
-// Log the values
-searchParams.forEach((value, key) => {
-  console.log(value, key);
-});
-
-    const url = new URL(document.location).searchParams;
-    console.log(url);
-    var pageDict = {};
-    url.forEach((value, key) => {
-      pageDict[key] = value;
-      console.log(value, key);
-    });
-if(pageDict != null)
-{
-clevertap.event.push("Page Viewed", pageDict);
-}
-else{
-  clevertap.event.push("Page Viewed");
-}
 
     navigator.permissions.query({name: 'notifications'}).then(function(permission) {  
     // Initial status is available at permission.state

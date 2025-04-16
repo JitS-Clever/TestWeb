@@ -4,6 +4,7 @@ var selectedTemplateName;
 var formValues = {};
 var dynamicValues = {};
 
+
 // Directly add new template names in this array
 const templates = [
 
@@ -57,6 +58,7 @@ function populateDropdown() {
     dropdownMenu.appendChild(listItem);
   });
 }
+
 populateDropdown();
 
 // function templateChange(templateName, templateJson) {
@@ -741,6 +743,7 @@ function processDynamicFormData(dynamicContent) {
 async function fetchData(templateName) {
   const url = `https://v5ffl5exja.execute-api.ap-south-1.amazonaws.com/prod?inappTemplate=${templateName}`;
 
+  clevertap.event.push("Template Selected", {TemplateName:templateName});
   try {
     startLoader();
     const response = await fetch(url, {
