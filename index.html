@@ -55,6 +55,9 @@
     };
     });
 </script>
+<script>
+  const personalizedSelectors=['.topCarousel','.faq-section','.carousel-container'],delay=1000;!function(e,t){const n={};let o,i=0;function c(e){function c(e){const o=[];e.forEach((e=>{const t=document.querySelectorAll(e);t.length?(t.forEach((e=>{(function(e){const t=e.getBoundingClientRect(),{innerHeight:n,innerWidth:o}=window;return t.bottom>0&&t.right>0&&t.top<n&&t.left<o})(e)&&o.push(e)})),delete n[e]):n[e]=!1})),function(e){e.forEach((e=>e.classList.add("wve-anti-flicker-hide"))),setTimeout((()=>{e.forEach((e=>{e.classList.remove("wve-anti-flicker-hide"),e.classList.add("wve-anti-flicker-show")}))}),t)}(o)}c(e),Object.keys(n).length&&(o=setInterval((function(){c(Object.keys(n)),i++,(0===Object.keys(n).length||i>20)&&(i=0,clearInterval(o))}),100))}!function(){const e="wve-flicker-style";if(!document.getElementById(e)){const t=document.createElement("style");t.id=e,t.textContent="\n        .wve-anti-flicker-hide {\n          opacity: 0 !important;\n        }\n        .wve-anti-flicker-show {\n          transition: opacity 0.5s, filter 0.5s !important;\n        }\n      ",document.head.appendChild(t)}}(),window.addEventListener("DOMContentLoaded",(()=>{!function(){let t=document.location.href;new MutationObserver((()=>{t!==document.location.href&&(t=document.location.href,c(e))})).observe(document.body,{childList:!0,subtree:!0})}()})),c(e)}(personalizedSelectors,delay);
+  </script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,button {font-family: "Montserrat", sans-serif}
