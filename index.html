@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <link rel="manifest" href="/TestWeb/json/manifest.json">
 <link rel="stylesheet" href="/TestWeb/css/main.css">
-<script type="text/javascript" src="/TestWeb/js/main.js"></script>
 <link rel="stylesheet" href="/TestWeb/css/bootstrap.min.css" >
 <script type="text/javascript" src="/TestWeb/js/jit.js" async></script>
 
@@ -57,7 +57,7 @@
 </script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.w3-bar,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 </style>
 
@@ -108,50 +108,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 
-<!-- Carousel Section for Jio  -->
+<!-- Carousel Section for Jio Design 2 -->
 <section id="topCarousel" class=" mt-5 p-5">
-  <div id="carouselDark" class="carousel" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  <div class="w-full max-w-6xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="carousel-container">
+        <!-- Slide 1 -->
+        <div class="carousel-slide content-top-left" style="background-image: url('https://myjiostatic.cdn.jio.com/cms/assets/business/home/managed-wi-fi-Tablet.webp');">
+            <div class="content text-white">
+                <h2 class="text-4xl font-bold mb-4">Managed Wi-Fi Solutions</h2>
+                <p class="mb-6 text-lg">Enterprise-grade connectivity for your business needs with seamless coverage.</p>
+                <button class="cta-button bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300">Learn More</button>
+            </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-slide content-bottom-right" style="background-image: url('https://myjiostatic.cdn.jio.com/cms/assets/business/home/new-july24-banner1-tab.webp');">
+            <div class="content text-white">
+                <h2 class="text-4xl font-bold mb-4">July 2024 Special Offers</h2>
+                <p class="mb-6 text-lg">Limited time deals on business connectivity solutions. Act fast!</p>
+                <button class="cta-button bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300">View Offers</button>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="carousel-slide content-bottom-left active" style="background-image: url('https://myjiostatic.cdn.jio.com/cms/assets/business/home/tab-banner1-0ct-24.webp');">
+            <div class="content text-white">
+                <h2 class="text-4xl font-bold mb-4">October 2024 Updates</h2>
+                <p class="mb-6 text-lg">Discover our latest business solutions and enhanced service offerings.</p>
+                <button class="cta-button bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-semibold transition duration-300">Explore Now</button>
+            </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <div class="carousel-arrow prev" onclick="moveSlide(-1)">❮</div>
+        <div class="carousel-arrow next" onclick="moveSlide(1)">❯</div>
+        
+        <!-- Dots Navigation -->
+        <div class="carousel-dots">
+            <div class="carousel-dot" onclick="goToSlide(0)"></div>
+            <div class="carousel-dot" onclick="goToSlide(1)"></div>
+            <div class="carousel-dot active" onclick="goToSlide(2)"></div>
+        </div>
+        
+        <!-- Position Controls -->
+        <!-- <div class="position-controls text-white">
+            <div class="text-sm font-semibold mb-2">Position:</div>
+            <div class="flex flex-col gap-2">
+                <button onclick="setPosition('content-top-left')" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-sm">Top Left</button>
+                <button onclick="setPosition('content-bottom-left')" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-sm">Bottom Left</button>
+                <button onclick="setPosition('content-bottom-right')" class="bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded text-sm">Bottom Right</button>
+            </div>
+        </div> -->
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/tab-banner1-0ct-24.webp" class="carouseljit" alt="...">
-        <div class="carouselcaption">
-          <h1 style="font-weight:900;">Exclusive Corporate Postpaid Plans</h5>
-          <p>With Unlimited 5G and Data rollover benefits.</p>
-          <input type="button" class="carouselbtn" value="Click Here">
-        </div>
-      </div>
-      <div class="carousel-item" >
-        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/managed-wi-fi-Tablet.webp" class="carouseljit" alt="...">
-        <div class="carouselcaptiontl">
-          <h1 style="font-weight:900;">Enterprise-Grade Managed Wi-Fi</h5>
-          <p>Reliable, Secure, and Scalable Connectivity for your Business</p>
-          <input type="button" class="carouselbtn" value="Click Here">
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="https://myjiostatic.cdn.jio.com/cms/assets/business/home/new-july24-banner1-tab.webp" class="carouseljit" alt="...">
-        <div class="carouselcaptiontl">
-          <h1 style="font-weight:900;">GrowNet Solutions for growing business</h5>
-          <p>Secure and managed connectivity services tailored for enterprises.</p>
-          <input type="button" class="carouselbtn" value="Click Here">
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+</div>
 </section>
+
 
 <!-- Header -->
 <header id="jumboTron" class="w3-container w3-red w3-center" style="padding:128px 16px">
@@ -466,6 +477,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
 })
 </script>
 <script src="/TestWeb/js/clevertap_sw.js"></script>
+<script type="text/javascript" src="/TestWeb/js/main.js"></script>
 
 
 </body>

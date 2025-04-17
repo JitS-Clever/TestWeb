@@ -40,4 +40,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
   });
-  
+
+  // Slider JS Below
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let autoSlideInterval;
+        
+        // Start auto-sliding
+        startAutoSlide();
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                moveSlide(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlides();
+            resetAutoSlide();
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlides();
+            resetAutoSlide();
+        }
+        
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function setPosition(positionClass) {
+            const positions = ['content-top-left', 'content-bottom-left', 'content-bottom-right'];
+            
+            slides.forEach(slide => {
+                // Remove all position classes
+                positions.forEach(pos => {
+                    slide.classList.remove(pos);
+                });
+                
+                // Add the selected position class
+                slide.classList.add(positionClass);
+            });
+        }
+        
+        // Pause auto-sliding when hovering over the carousel
+        document.querySelector('.carousel-container').addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        // Resume auto-sliding when mouse leaves the carousel
+        document.querySelector('.carousel-container').addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+        
+        
