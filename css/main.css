@@ -1,3 +1,9 @@
+.mynav{
+  background-color: #0f3cc9;
+  color: #fff;
+}
+
+
 .carouseljit {
     width: 100%;
     height: 520px;
@@ -142,6 +148,7 @@
     overflow: hidden;
     max-width: 480px;
     transition: transform 0.3s ease;
+    margin: 3rem 6rem;
   }
 
   .cardj:hover {
