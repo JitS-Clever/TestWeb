@@ -18,7 +18,10 @@
      })();
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/TestWeb/css/call.css">
+    <script src="/TestWeb/js/call.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap-signedcall.umd.js"></script>
     <style>
         
         .rating {
@@ -159,6 +162,36 @@
         <i class="fas fa-home"></i>
     </a>    
 
+    <!-- Call Button -->
+    <div class="floating-button call-button" id="callButton" title="Make a Call">
+        <i class="fas fa-phone"></i>
+    </div>
+
+    <!-- Call Modal to take called id and dial it dumbo -->
+    <div class="modal-overlay" id="callModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Make a Call</h3>
+                <button class="close-button" id="closeModal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="callerId" class="form-label">Caller ID</label>
+                    <input type="text" id="callerId" class="form-input" placeholder="Enter your caller ID">
+                </div>
+                <div class="form-group">
+                    <label for="receiverId" class="form-label">Receiver ID</label>
+                    <input type="text" id="receiverId" class="form-input" placeholder="Enter your receiver ID">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-cancel" id="cancelCall">Cancel</button>
+                <button class="btn btn-call" id="initiateCall" disabled="">Call</button>
+            </div>
+        </div>
+    </div>
+    <div class="toast" id="toast"></div>
+
     <script>
         // Feedback form submission
         document.getElementById('feedbackForm').addEventListener('submit', function(e) {
@@ -176,7 +209,6 @@
             }, 5000);
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9319b8bbc5f38b0f',t:'MTc0NDg2OTgzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
