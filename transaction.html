@@ -5,7 +5,7 @@
     <script type="text/javascript">
         var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
     // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-    clevertap.account.push({ "id": "TEST-75R-654-5Z6Z" });
+    clevertap.account.push({ "id": "75R-654-5Z6Z" });
     clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
     clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
     (function () {
@@ -22,6 +22,7 @@
     <script src="/TestWeb/js/call.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap-signedcall.umd.js"></script>
+    <script src="/TestWeb/js/transaction.js"></script>
     <style>
         
         .rating {
@@ -150,8 +151,8 @@
                     <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium transition duration-300">
                         <i class="fas fa-download mr-2"></i>Download Receipt
                     </button>
-                    <button class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md font-medium transition duration-300">
-                        <i class="fas fa-envelope mr-2"></i>Email Receipt
+                    <button id="transactionFeedback" class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-md font-medium transition duration-300">
+                        <i class="fas fa-envelope mr-2"></i>Give Feedback
                     </button>
                 </div>
             </div>

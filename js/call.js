@@ -11,6 +11,25 @@ function getLocalStream() {
       });
   }
  
+getLocalStream();
+
+function calluser(){
+    if (SignedCallClient.isEnabled()) {
+        window.SignedCallClient.call(receiver, "Getting a call from "+caller.toUpperCase()).then(response => {
+            // if the call has been answered
+            console.log("call status is: ",response)
+            // Show toast notification
+            toast.textContent = `Call initiated with ID: ${caller}`;
+            toast.classList.add('show');
+        }).catch (err => {
+            // if the call is either missed or declined 
+            // Show toast notification
+            toast.textContent = `Call missed or declined with ID: ${receiver}`;
+            toast.classList.add('show');
+            console.log("call status is: ", err)
+        })
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
             const callButton = document.getElementById('callButton');
@@ -59,10 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
             initiateCall.addEventListener('click', function() {
                 const caller = callerId.value.trim();
                 const receiver = receiverId.value.trim();
-                getLocalStream();
                 
                 if (micPermission==true) {
-                    SignedCallSDK.initSignedCall({
+                    window.SignedCallSDK.initSignedCall({
                         accountId: "67a9ead27be487e18d1681ed",
                         apikey: "M9eULHgg2CgJP4wJ53jKpCUYQMu14FemJLXH4WLuQvN35u3VRxuUDW8zP8SEZRJV",
                         cuid: caller,
@@ -70,29 +88,18 @@ document.addEventListener('DOMContentLoaded', function() {
                         name:caller.toUpperCase()
                         })
                         .then((client) => {
-                        console.log({ client })
-                        SignedCallClient = client;
+                            console.log("SignedCall Init Successful")
+                            console.log({ client })
+                            SignedCallClient = client;
+                            calluser();
                             
                           })
-                        .catch(e => console.log("SignedCall Init Error : "+e));
+                        .catch(e => console.log(e));
+                      }
+                      else{
+                        console.log("MiC Permission not ")
                       }
 
-                if (SignedCallClient.isEnabled()) {
-                    SignedCallClient.call(receiver, "Getting a call from "+caller.toUpperCase())
-                    .then(response => {
-                        // if the call has been answered
-                        console.log("call status is: ",response)
-                        // Show toast notification
-                        toast.textContent = `Call initiated with ID: ${caller}`;
-                        toast.classList.add('show');
-                    }).catch (err => {
-                        // if the call is either missed or declined 
-                        // Show toast notification
-                        toast.textContent = `Call missed or declined with ID: ${receiver}`;
-                        toast.classList.add('show');
-                        console.log("call status is: ", err)
-                    })
-                }
                 
                 // Close the modal
                 closeCallModal();
@@ -103,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     toast.classList.remove('show');
                 }, 3000);
                 
-                console.log(`Initiating call with ID: ${id}`);
+                console.log(`Initiating call with ID: ${receiver}`);
                 // Here you would typically integrate with your actual calling system
             });
 
