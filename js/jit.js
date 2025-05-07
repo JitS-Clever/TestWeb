@@ -105,6 +105,10 @@ var itemcount2 = 1;
 function start(){
     var label = document.getElementById("ctid");
     label.innerHTML = "Clevertap id is : " + clevertap.getCleverTapID();
+
+    // window.clevertap.account.push({"id": "49K-57W-4Z6Z"});
+    // console.log("49K-57W-4Z6Zgbafk");
+
 }
 
 function loginClicked(){
