@@ -12,7 +12,12 @@ function checkAuthStatus() {
         // Hide login overlay for logged-in users
         document.getElementById('loginOverlay').style.display = 'none';
         document.body.style.overflow = ''; // Restore scrolling
-        
+        clevertap.onUserLogin.push({
+            "Site": {
+                "Email":currentUser.email,
+                "Email_Domain":currentUser.domain,
+                "Identity":currentUser.email.split('@')[0]
+            }});
         return true;
     }
     
@@ -211,6 +216,14 @@ async function requestAccess() {
 function loginUser(userData) {
     currentUser = userData;
     localStorage.setItem('currentUser', JSON.stringify(userData));
+
+    clevertap.onUserLogin.push({
+        "Site": {
+            "Email":currentUser.email,
+            "Email_Domain":currentUser.domain,
+            "Identity":currentUser.email.split('@')[0]
+        }});
+
     
     // Update UI before hiding the overlay to ensure proper rendering
     updateUIForLoggedInUser();
