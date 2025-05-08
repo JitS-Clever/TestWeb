@@ -3,6 +3,7 @@ var templateCode;
 var selectedTemplateName;
 var formValues = {};
 var dynamicValues = {};
+var tempName = '';
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -770,6 +771,7 @@ function processDynamicFormData(dynamicContent) {
 
 async function fetchData(templateName) {
   const url = `https://v5ffl5exja.execute-api.ap-south-1.amazonaws.com/prod?inappTemplate=${templateName}`;
+  tempName = templateName;
 
   clevertap.event.push("Template Selected", {TemplateName:templateName});
   try {
@@ -808,6 +810,11 @@ function copyCode() {
     .writeText(codeBlock.value)
     .then(() => {
       alert("Code copied to clipboard!");
+      clevertap.event.push("Template Selected", {
+        "TemplateName":tempName,
+        "Action":"Click",
+        "Label":"Copy Button"
+      });
     })
     .catch((err) => {
       console.error("Failed to copy: ", err);
@@ -956,6 +963,13 @@ function codeBuilder(isPreview = false, previewData = null) {
   } else {
     loadIframeInternal(processedCode);
   }
+
+  clevertap.event.push("Template Selected", {
+    "TemplateName":tempName,
+    "Action":"Click",
+    "Label":"Apply Filter"
+  });
+
 }
 
 // Keep a simple internal implementation as fallback
