@@ -4,29 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template Showcase</title>
-    <script type="text/javascript">
-        var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
-    // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-    clevertap.account.push({ "id": "TEST-75R-654-5Z6Z" });
-    clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
-    clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
-    (function () {
-            var wzrk = document.createElement('script');
-            wzrk.type = 'text/javascript';
-            wzrk.async = true;
-            wzrk.src = "https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk/clevertap.js"
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wzrk, s);
-     })();
-    </script>
     <link rel="stylesheet" href="/TestWeb/css/inappstyles.css">
     <link rel="stylesheet" href="/TestWeb/css/editor.css">
     <link rel="stylesheet" href="/TestWeb/css/bootstrap.min.css">
+    <script type="text/javascript">
+        var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+        clevertap.account.push({ "id": "TEST-75R-654-5Z6Z" });
+        clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+        clevertap.privacy.push({useIP: true}); //set the flag to true, if the user agrees to share their IP data
+        (function () {
+                var wzrk = document.createElement('script');
+                wzrk.type = 'text/javascript';
+                // wzrk.defer = true;
+                wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wzrk, s);
+        })();
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="/TestWeb/js/bootstrap.min.js"></script>
     <script src="/TestWeb/js/auth.js"></script>
-    <script src="/TestWeb/js/editor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs/loader.min.js"></script>
 
 <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -186,5 +183,7 @@
         </div>
     </footer>
 </body>
+<script defer src="/TestWeb/js/editor.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.39.0/min/vs/loader.min.js"></script>
 <script src="/TestWeb/js/inapp.js"></script>
 </html>
