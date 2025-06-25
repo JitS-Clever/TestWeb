@@ -384,6 +384,20 @@
   }
   
   @media (max-width: 640px) {
+
+      .floating-button {
+                  bottom: 20px;
+                  right: 20px;
+                  width: 50px;
+                  height: 50px;
+                  font-size: 20px;
+              }
+            
+      .inbox-button {
+          bottom: 80px;
+          right: 20px;
+      }
+
       .position-controls {
           top: 10px;
           right: 10px;
@@ -421,3 +435,38 @@
           max-width: 280px;
       }
   }
+
+
+  /* Floating buttons */
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            color: #0f3cc9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .inbox-button {
+            background-color: #ffffff;
+            bottom: 50px;
+            right: 30px;
+        }
+
+        .inbox-button:hover {
+            background-color: #fedf81;
+        }
