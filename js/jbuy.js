@@ -1,11 +1,21 @@
 var pageDict = { PageName: "JBuy Home" };
-var PIPVideo; 
+var PIPVideo;
 
 function defineVariable() {
 
     PIPVideo = clevertap.defineVariable("PIPVideo", "{\"enabled\":false,\"video_url\":\"NA\",\"position\":\"NA\",\"redirect_url\":\"NA\"}");
-    BulletNudge = clevertap.defineVariable("BulletNudge","{\"enabled\":false,\"title\":\"EOSSale\",\"time\":\"\",\"redirect_url\":\"https://jits-clever.github.io/TestWeb/\",\"bg_colour\":\"\",\"icon_url\":\"\",\"title_color\":\"\",\"timer_color\":\"\"}");
+    BulletNudge = clevertap.defineVariable("BulletNudge", "{\"enabled\":false,\"title\":\"EOSSale\",\"time\":\"\",\"redirect_url\":\"https://jits-clever.github.io/TestWeb/\",\"bg_colour\":\"\",\"icon_url\":\"\",\"title_color\":\"\",\"timer_color\":\"\"}");
 
+
+}
+
+function raisePageView(pageDict) {
+    var evProperties = { "Page Name": pageDict["PageName"], "source":pageDict["source"],AppVersion:pageDict[appVersion]}
+    if (window.CleverTap) {
+        CleverTap.pushEvent("Page Viewed",JSON.stringify(evProperties));
+    } else {
+        clevertap.event.push("Page Viewed",evProperties)
+    }
 
 }
 
@@ -35,26 +45,27 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+    raisePageView(pageDict);
 
     defineVariable();
-     clevertap.fetchVariables(
+    clevertap.fetchVariables(
         () => {
             console.log("Fetch successful");
-            if (PIPVideo) {
-                const PIPvalue = PIPVideo.getValue();
-                const NudgeValue = BulletNudge.getValue();
+            // if (PIPVideo) {
+            //     const PIPvalue = PIPVideo.getValue();
+            //     const NudgeValue = BulletNudge.getValue();
 
-                try {
-                    if (window.jBuyBridge && jBuyBridge.triggerPiP && jBuyBridge.triggerBullet) {
-                        jBuyBridge.triggerPiP(PIPvalue);
-                        jBuyBridge.triggerBullet(NudgeValue);
-                    } else {
-                        
-                    }
-                } catch (err) {
-                    console.error("Error parsing PIPVideo value:", err);
-                }
-            }
+            //     try {
+            //         if (window.jBuyBridge && jBuyBridge.triggerPiP && jBuyBridge.triggerBullet) {
+            //             jBuyBridge.triggerPiP(PIPvalue);
+            //             jBuyBridge.triggerBullet(NudgeValue);
+            //         } else {
+
+            //         }
+            //     } catch (err) {
+            //         console.error("Error parsing PIPVideo value:", err);
+            //     }
+            // }
         }
     );
 
