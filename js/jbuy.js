@@ -3,7 +3,8 @@ var PIPVideo;
 
 function defineVariable() {
 
-    PIPVideo = clevertap.defineVariable("PIPVideo", "{\"enabled\":false,\"video_url\":\"NA\",\"position\":\"NA\",\"redirect_url\":\"NA\"}")
+    PIPVideo = clevertap.defineVariable("PIPVideo", "{\"enabled\":false,\"video_url\":\"NA\",\"position\":\"NA\",\"redirect_url\":\"NA\"}");
+    BulletNudge = clevertap.defineVariable("BulletNudge","{\"enabled\":false,\"title\":\"EOSSale\",\"time\":\"\",\"redirect_url\":\"https://jits-clever.github.io/TestWeb/\",\"bg_colour\":\"\",\"icon_url\":\"\",\"title_color\":\"\",\"timer_color\":\"\"}");
 
 
 }
@@ -40,13 +41,13 @@ document.addEventListener("DOMContentLoaded", function () {
         () => {
             console.log("Fetch successful");
             if (PIPVideo) {
-                const value = PIPVideo.getValue();
-                console.log("PIPVideo value:", value);
+                const PIPvalue = PIPVideo.getValue();
+                const NudgeValue = BulletNudge.getValue();
 
                 try {
-                    const parsed = JSON.parse(value);
-                    if (window.jBuyBridge && jBuyBridge.triggerPiP) {
-                        jBuyBridge.triggerPiP(value);
+                    if (window.jBuyBridge && jBuyBridge.triggerPiP && jBuyBridge.triggerBullet) {
+                        jBuyBridge.triggerPiP(PIPvalue);
+                        jBuyBridge.triggerBullet(NudgeValue);
                     } else {
                         
                     }
