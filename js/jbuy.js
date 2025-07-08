@@ -10,7 +10,7 @@ function defineVariable() {
 }
 
 function raisePageView(pageDict) {
-    var evProperties = { "Page Name": pageDict["PageName"], "source":pageDict["source"],AppVersion:pageDict[appVersion]}
+    var evProperties = { "Page Name": pageDict["PageName"], "source":pageDict["source"],"AppVersion":pageDict["appVersion"]}
     if (window.CleverTap) {
         CleverTap.pushEvent("Page Viewed",JSON.stringify(evProperties));
     } else {
