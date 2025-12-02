@@ -72,6 +72,8 @@ function titleChange(bannerKeys) {
 
 document.addEventListener('CT_web_native_display', function(e) {
       console.log('Event is ', e.detail)
+      const data = event.detail;
+      clevertap.renderNotificationViewed(data);
       var bannerKeys = e.detail.kv
       var bannerType = bannerKeys.topic.split(",");
       console.log(bannerType)
