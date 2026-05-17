@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinVest – Invest Smarter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/finvest.css">
+
+    <!-- ── CleverTap SDK ──────────────────────────────────── -->
+    <script type="text/javascript">
+        var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+        clevertap.account.push({"id": "75R-654-5Z6Z"});
+        clevertap.privacy.push({optOut: false});
+        clevertap.privacy.push({useIP: true});
+        clevertap.dismissSpamControl = true;
+        (function () {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript'; wzrk.defer = true;
+            wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
+            document.getElementsByTagName('script')[0].parentNode.insertBefore(wzrk, document.getElementsByTagName('script')[0]);
+        })();
+    </script>
+
+    <!-- ── WVE Anti-Flicker ───────────────────────────────── -->
+    <script>
+        const personalizedSelectors=[
+            '#ctLastVisitedStock','#ctRecentlyViewed',
+            '#ctAdSlot','#popularFundsSection','#topMFSection'
+        ], delay=600;
+        !function(e,t){const n={};let o,i=0;function c(e){function c(e){const o=[];e.forEach((e=>{const t=document.querySelectorAll(e);t.length?(t.forEach((e=>{(function(e){const t=e.getBoundingClientRect(),{innerHeight:n,innerWidth:o}=window;return t.bottom>0&&t.right>0&&t.top<n&&t.left<o})(e)&&o.push(e)})),delete n[e]):n[e]=!1})),function(e){e.forEach((e=>e.classList.add("wve-anti-flicker-hide"))),setTimeout((()=>{e.forEach((e=>{e.classList.remove("wve-anti-flicker-hide"),e.classList.add("wve-anti-flicker-show")}))}),t)}(o)}c(e),Object.keys(n).length&&(o=setInterval((function(){c(Object.keys(n)),i++,(0===Object.keys(n).length||i>20)&&(i=0,clearInterval(o))}),100))}!function(){const e="wve-flicker-style";if(!document.getElementById(e)){const t=document.createElement("style");t.id=e,t.textContent="\n.wve-anti-flicker-hide{opacity:0!important}\n.wve-anti-flicker-show{transition:opacity .5s,filter .5s!important}\n",document.head.appendChild(t)}}(),window.addEventListener("DOMContentLoaded",(()=>{!function(){let t=document.location.href;new MutationObserver((()=>{t!==document.location.href&&(t=document.location.href,c(e))})).observe(document.body,{childList:!0,subtree:!0})}()})),c(e)}(personalizedSelectors,delay);
+    </script>
+
+    <!-- GTM -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5SLRV86');</script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════════════════ -->
+<header class="fv-header">
+    <div class="fv-header-inner">
+
+        <!-- Logo -->
+        <a href="/TestWeb/finvest.html" class="fv-logo">
+            <div class="fv-logo-mark">F</div>
+            <span class="fv-logo-text">Fin<span>Vest</span></span>
+        </a>
+
+        <!-- Search (desktop) -->
+        <div class="fv-search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search stocks, mutual funds, IPOs…"
+                   onfocus="clevertap.event.push('Search Focused',{Page:'FinVest'})">
+            <span style="font-size:11px;color:var(--t4);padding:2px 6px;border:1px solid var(--border);border-radius:4px;">⌘K</span>
+        </div>
+
+        <!-- Nav links (desktop) -->
+        <nav class="fv-nav-links">
+            <a class="fv-nav-link active" href="#">Dashboard</a>
+            <a class="fv-nav-link" href="#">Stocks</a>
+            <a class="fv-nav-link" href="#">Mutual Funds</a>
+            <a class="fv-nav-link" href="#">IPO</a>
+            <a class="fv-nav-link" href="#">More ▾</a>
+        </nav>
+
+        <!-- Actions -->
+        <div class="fv-header-actions">
+            <div class="fv-market-pill">
+                <div class="dot"></div>NSE Live
+            </div>
+            <div class="fv-portfolio-chip">
+                <i class="fas fa-chart-line" style="font-size:12px;"></i>
+                <span>Portfolio</span>
+                <span class="val">₹2,48,310</span>
+                <span class="chg">↑4.2%</span>
+            </div>
+            <button class="fv-icon-btn" title="Notifications" style="position:relative;">
+                <i class="fas fa-bell"></i>
+                <span style="position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--negative);border:1.5px solid white;"></span>
+            </button>
+            <button class="fv-icon-btn" title="Watchlist"><i class="fas fa-star"></i></button>
+            <button class="btn-login">Log In</button>
+            <button class="btn-open-account" onclick="clevertap.event.push('Open Account Clicked',{Source:'Header'})">Open Account</button>
+            <button class="fv-icon-btn" id="fvMenuBtn" style="display:none;"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="fvMobileMenu" style="display:none;">
+        <a href="#">Dashboard</a>
+        <a href="#">Stocks</a>
+        <a href="#">Mutual Funds</a>
+        <a href="#">IPO</a>
+        <a href="/TestWeb/index.html">← CT Hub</a>
+    </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════════
+     REGULATORY / INFO BANNER  (CT target)
+     topic = "regulatoryBanner"
+     ══════════════════════════════════════════════════════ -->
+<div id="ctRegBanner"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     LIVE MARKET TICKER
+     ══════════════════════════════════════════════════════ -->
+<div class="fv-ticker">
+    <div class="ticker-track">
+        <span class="ticker-item"><span class="t-name">NIFTY 50</span><span class="t-val">22,147.90</span><span class="t-chg t-up">▲ 99.85 (+0.45%)</span></span>
+        <span class="ticker-item"><span class="t-name">SENSEX</span><span class="t-val">73,158.24</span><span class="t-chg t-up">▲ 379.12 (+0.52%)</span></span>
+        <span class="ticker-item"><span class="t-name">BANK NIFTY</span><span class="t-val">46,789.10</span><span class="t-chg t-dn">▼ 56.30 (−0.12%)</span></span>
+        <span class="ticker-item"><span class="t-name">NIFTY IT</span><span class="t-val">35,246.50</span><span class="t-chg t-up">▲ 389.40 (+1.12%)</span></span>
+        <span class="ticker-item"><span class="t-name">NIFTY MIDCAP</span><span class="t-val">11,456.80</span><span class="t-chg t-up">▲ 89.20 (+0.78%)</span></span>
+        <span class="ticker-item"><span class="t-name">NIFTY PHARMA</span><span class="t-val">18,923.40</span><span class="t-chg t-up">▲ 64.10 (+0.34%)</span></span>
+        <span class="ticker-item"><span class="t-name">NIFTY AUTO</span><span class="t-val">20,341.70</span><span class="t-chg t-dn">▼ 123.50 (−0.60%)</span></span>
+        <span class="ticker-item"><span class="t-name">INDIA VIX</span><span class="t-val">13.42</span><span class="t-chg t-dn">▼ 0.58 (−4.14%)</span></span>
+        <span class="ticker-item"><span class="t-name">GOLD</span><span class="t-val">72,140</span><span class="t-chg t-up">▲ 210 (+0.29%)</span></span>
+        <span class="ticker-item"><span class="t-name">USD/INR</span><span class="t-val">83.47</span><span class="t-chg t-flat">→ 0.00 (0.00%)</span></span>
+    </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE CONTENT
+     ══════════════════════════════════════════════════════ -->
+<div class="fv-page">
+
+    <!-- ── CT PERSONALISED AD SLOT (shown above hero if CT fires) ── -->
+    <!-- topic = "topAdBanner" -->
+    <div id="ctAdSlot" style="margin-bottom:16px;"></div>
+
+    <!-- ── HERO ROW: Portfolio + Ad Carousel ───────── -->
+    <div class="fv-hero-row fv-section">
+
+        <!-- Portfolio Summary -->
+        <div class="portfolio-card">
+            <div class="portfolio-top">
+                <div class="pt-label">Total Portfolio Value</div>
+                <div class="pt-value">₹2,48,310.45</div>
+                <div class="pt-pnl">
+                    <span class="pos">↑ ₹4,210.32 (+1.72%) Today</span>
+                    <span class="muted">· As of 3:29 PM</span>
+                </div>
+            </div>
+            <div class="portfolio-bottom">
+                <div class="port-stats-grid">
+                    <div class="port-stat-item">
+                        <div class="psi-label">Invested</div>
+                        <div class="psi-val">₹2,09,500.00</div>
+                        <div class="psi-sub">Total corpus</div>
+                    </div>
+                    <div class="port-stat-item">
+                        <div class="psi-label">Total Returns</div>
+                        <div class="psi-val pos">+₹38,810.45</div>
+                        <div class="psi-sub pos" style="font-weight:600;">+18.52% overall</div>
+                    </div>
+                    <div class="port-stat-item">
+                        <div class="psi-label">1D Change</div>
+                        <div class="psi-val pos">+₹4,210.32</div>
+                        <div class="psi-sub pos" style="font-weight:600;">+1.72% today</div>
+                    </div>
+                    <div class="port-stat-item">
+                        <div class="psi-label">Active SIPs</div>
+                        <div class="psi-val">4 SIPs</div>
+                        <div class="psi-sub">₹8,500/month</div>
+                    </div>
+                </div>
+                <div class="port-cta-row">
+                    <button class="port-btn port-btn-primary"
+                        onclick="clevertap.event.push('Invest More Clicked',{Source:'Portfolio Card'})">
+                        Invest More
+                    </button>
+                    <button class="port-btn port-btn-secondary"
+                        onclick="clevertap.event.push('View Portfolio Clicked')">
+                        View Holdings
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Ad Carousel -->
+        <div class="ad-carousel-wrap" id="adCarouselWrap">
+            <div id="staticAdSlides">
+
+                <!-- Slide 1 -->
+                <div class="ad-slide active"
+                     style="background:linear-gradient(135deg,#0A2E1E 0%,#0D4A32 45%,#1A6B4A 100%);">
+                    <div class="ad-content">
+                        <div class="ad-badge">🌱 Start Today</div>
+                        <h2>SIPs from ₹100/month</h2>
+                        <p>Build long-term wealth with India's top-rated mutual funds. Zero commission.</p>
+                        <a class="ad-cta" style="color:#0D4A32;"
+                           href="#" onclick="ctAdClick('SIP Banner')">Start SIP →</a>
+                    </div>
+                    <img class="ad-img" src="https://img.freepik.com/free-vector/investment-concept-illustration_114360-1316.jpg" alt="">
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="ad-slide"
+                     style="background:linear-gradient(135deg,#1A0533 0%,#2D0B55 45%,#4A1A7A 100%);">
+                    <div class="ad-content">
+                        <div class="ad-badge">💰 Tax Season</div>
+                        <h2>Save ₹46,800 in Tax</h2>
+                        <p>Invest up to ₹1.5L in ELSS funds. Save tax under Section 80C.</p>
+                        <a class="ad-cta" style="color:#2D0B55;"
+                           href="#" onclick="ctAdClick('ELSS Banner')">Explore ELSS →</a>
+                    </div>
+                    <img class="ad-img" src="https://img.freepik.com/free-vector/tax-concept-illustration_114360-3005.jpg" alt="">
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="ad-slide"
+                     style="background:linear-gradient(135deg,#0D1F4A 0%,#1A3A7A 45%,#2A5FAF 100%);">
+                    <div class="ad-content">
+                        <div class="ad-badge">🔥 IPO Alert</div>
+                        <h2>3 New Listings This Week</h2>
+                        <p>Apply before the subscription window closes. High-demand IPOs available.</p>
+                        <a class="ad-cta" style="color:#1A3A7A;"
+                           href="#" onclick="ctAdClick('IPO Banner')">Apply Now →</a>
+                    </div>
+                    <img class="ad-img" src="https://img.freepik.com/free-vector/stock-market-concept-illustration_114360-7988.jpg" alt="">
+                </div>
+
+            </div>
+
+            <!-- Controls -->
+            <button class="ad-nav-btn ad-nav-prev" onclick="adPrev()">&#8249;</button>
+            <button class="ad-nav-btn ad-nav-next" onclick="adNext()">&#8250;</button>
+            <div class="ad-dots" id="adDots">
+                <button class="ad-dot active" onclick="adGoTo(0)"></button>
+                <button class="ad-dot" onclick="adGoTo(1)"></button>
+                <button class="ad-dot" onclick="adGoTo(2)"></button>
+            </div>
+        </div>
+
+    </div><!-- /hero-row -->
+
+
+    <!-- ── QUICK ACCESS PRODUCTS (Groww-style pill icons) ── -->
+    <div class="fv-card fv-section" style="padding:18px 20px;">
+        <div class="fv-sec-head" style="margin-bottom:14px;">
+            <div><div class="fv-sec-title">Quick Access</div></div>
+        </div>
+        <div class="products-scroll">
+
+            <div class="prod-pill" onclick="ctProductClick('NFO')">
+                <div class="prod-icon" style="background:#EDE7F6;"><i class="fas fa-file-contract" style="color:#7B1FA2;"></i></div>
+                <div class="prod-label">NFO</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('SIP Calculator')">
+                <div class="prod-icon" style="background:#E3F2FD;"><i class="fas fa-calculator" style="color:#1565C0;"></i></div>
+                <div class="prod-label">SIP Calc</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Compare Funds')">
+                <div class="prod-icon" style="background:var(--brand-light);"><i class="fas fa-scale-balanced" style="color:var(--brand);"></i></div>
+                <div class="prod-label">Compare</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Cart')">
+                <div class="prod-icon" style="background:#FFF3E0;"><i class="fas fa-cart-shopping" style="color:#E65100;"></i></div>
+                <div class="prod-label">Cart</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Portfolio Tracker')">
+                <div class="prod-icon" style="background:#FCE4EC;"><i class="fas fa-briefcase" style="color:#AD1457;"></i></div>
+                <div class="prod-label">Portfolio</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('ELSS / Tax Saver')">
+                <div class="prod-icon" style="background:#E8EAF6;"><i class="fas fa-piggy-bank" style="color:#3949AB;"></i></div>
+                <div class="prod-label">Tax Saver</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Top Gainers')">
+                <div class="prod-icon" style="background:#E0F7FA;"><i class="fas fa-rocket" style="color:#00838F;"></i></div>
+                <div class="prod-label">Gainers</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('IPO')">
+                <div class="prod-icon" style="background:#FFF8E1;"><i class="fas fa-building-columns" style="color:#F9A825;"></i></div>
+                <div class="prod-label">IPO</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Watchlist')">
+                <div class="prod-icon" style="background:#F3E5F5;"><i class="fas fa-star" style="color:#8E24AA;"></i></div>
+                <div class="prod-label">Watchlist</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('FD')">
+                <div class="prod-icon" style="background:#F1F8E9;"><i class="fas fa-landmark" style="color:#558B2F;"></i></div>
+                <div class="prod-label">Fixed Dep.</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('US Stocks')">
+                <div class="prod-icon" style="background:#E8EAF6;"><i class="fab fa-stripe-s" style="color:#3949AB;"></i></div>
+                <div class="prod-label">US Stocks</div>
+            </div>
+
+            <div class="prod-pill" onclick="ctProductClick('Reports')">
+                <div class="prod-icon" style="background:#FBE9E7;"><i class="fas fa-chart-pie" style="color:#BF360C;"></i></div>
+                <div class="prod-label">Reports</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ── MAIN GRID: Last Visited (CT) + Market Overview ── -->
+    <div class="fv-main-grid fv-section">
+
+        <!-- LEFT: Last Visited Stock (CT) + Recently Viewed -->
+        <div>
+
+            <!-- Last Visited Stock – CT Native Display target -->
+            <!-- topic = "lastVisitedStock" -->
+            <div class="fv-sec-head">
+                <div>
+                    <div class="fv-sec-title">Last Visited Stock</div>
+                    <div class="fv-sec-sub">Personalised · Updated via CleverTap Native Display</div>
+                </div>
+                <a class="fv-see-all" href="#">All Stocks <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+            </div>
+
+            <div id="ctLastVisitedStock" style="margin-bottom:20px;">
+                <!-- Empty state – CT will replace this on campaign fire -->
+                <div class="lvs-empty-state">
+                    <i class="fas fa-chart-candlestick"></i>
+                    <div class="lvs-empty-title">No recent stock activity</div>
+                    <div class="lvs-empty-sub">Stocks you view will appear here for quick access.</div>
+                    <div class="lvs-ct-hint">↑ Driven by CT Web Native Display · topic: "lastVisitedStock"</div>
+                </div>
+            </div>
+
+            <!-- Recently Viewed Stocks (CT + static fallback) -->
+            <!-- topic = "recentlyViewed" -->
+            <div class="fv-sec-head">
+                <div>
+                    <div class="fv-sec-title">Recently Viewed</div>
+                    <div class="fv-sec-sub">Your browsing history · CT-personalised</div>
+                </div>
+                <a class="fv-see-all" href="#">View All <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+            </div>
+
+            <div class="rv-grid" id="ctRecentlyViewed">
+                <!-- Populated by finvest.js (CT first, static fallback at 1.5s) -->
+            </div>
+
+        </div>
+
+        <!-- RIGHT: Market Overview + Gainers/Losers -->
+        <div>
+
+            <!-- Market Indices with sparklines -->
+            <div class="fv-sec-head">
+                <div class="fv-sec-title">Markets</div>
+                <a class="fv-see-all" href="#">Full View <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+            </div>
+
+            <div class="fv-market-panel fv-section">
+                <div style="padding:14px 18px 0;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+                        <span style="font-size:13px;font-weight:700;color:var(--t1);">Indices</span>
+                        <span style="font-size:11px;color:var(--t4);">17 May 2026, 03:29 PM</span>
+                    </div>
+                </div>
+
+                <div class="index-row" onclick="ctTrackStockClick('NIFTY50','Nifty 50','22147.90')">
+                    <div><div class="ir-name">NIFTY 50</div><div class="ir-sub">NSE · India</div></div>
+                    <div class="ir-spark">
+                        <svg width="62" height="24" viewBox="0 0 62 24" fill="none"><path d="M 0,20 C 10,17 18,15 26,11 C 34,7 42,9 50,6 C 55,4 59,3 62,2" stroke="#00B386" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div><div class="ir-val">22,147.90</div><div class="ir-chg pos">▲ 99.85 &nbsp;(+0.45%)</div></div>
+                </div>
+
+                <div class="index-row" onclick="ctTrackStockClick('SENSEX','BSE Sensex','73158.24')">
+                    <div><div class="ir-name">SENSEX</div><div class="ir-sub">BSE · India</div></div>
+                    <div class="ir-spark">
+                        <svg width="62" height="24" viewBox="0 0 62 24" fill="none"><path d="M 0,19 C 8,16 16,18 24,13 C 32,8 42,10 50,7 C 56,5 60,3 62,2" stroke="#00B386" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div><div class="ir-val">73,158.24</div><div class="ir-chg pos">▲ 379.12 &nbsp;(+0.52%)</div></div>
+                </div>
+
+                <div class="index-row" onclick="ctTrackStockClick('BANKNIFTY','Bank Nifty','46789.10')">
+                    <div><div class="ir-name">BANK NIFTY</div><div class="ir-sub">NSE · India</div></div>
+                    <div class="ir-spark">
+                        <svg width="62" height="24" viewBox="0 0 62 24" fill="none"><path d="M 0,4 C 10,7 18,5 26,10 C 34,14 42,12 50,16 C 56,18 60,19 62,20" stroke="#E74C3C" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div><div class="ir-val">46,789.10</div><div class="ir-chg neg">▼ 56.30 &nbsp;(−0.12%)</div></div>
+                </div>
+
+                <div class="index-row" onclick="ctTrackStockClick('NIFTYIT','Nifty IT','35246.50')">
+                    <div><div class="ir-name">NIFTY IT</div><div class="ir-sub">NSE · India</div></div>
+                    <div class="ir-spark">
+                        <svg width="62" height="24" viewBox="0 0 62 24" fill="none"><path d="M 0,18 C 8,14 16,16 24,11 C 32,6 42,8 50,4 C 56,2 60,2 62,1" stroke="#00B386" stroke-width="1.6" stroke-linecap="round"/></svg>
+                    </div>
+                    <div><div class="ir-val">35,246.50</div><div class="ir-chg pos">▲ 389.40 &nbsp;(+1.12%)</div></div>
+                </div>
+
+                <!-- Gainers / Losers tabs -->
+                <div class="gl-tabs" style="margin-top:8px;">
+                    <div class="gl-tab active" data-which="gainers">Top Gainers</div>
+                    <div class="gl-tab" data-which="losers">Top Losers</div>
+                </div>
+
+                <!-- Gainers Panel -->
+                <div class="gl-panel" id="gl-gainers">
+                    <div class="gl-list">
+                        <div class="gl-row" onclick="ctTrackStockClick('IRFC','Indian Rly Finance','227.50')">
+                            <div><div class="gr-sym">IRFC</div><div class="gr-name">Indian Rly Finance</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,16 C8,12 16,14 24,9 C32,4 38,5 45,2" stroke="#00B386" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹227.50</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-pos">+5.82%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('ADANIPORTS','Adani Ports','1124.60')">
+                            <div><div class="gr-sym">ADANIPORTS</div><div class="gr-name">Adani Ports</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,15 C10,11 20,13 28,8 C36,4 40,5 45,2" stroke="#00B386" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹1,124.60</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-pos">+4.21%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('TATAMOTORS','Tata Motors','924.80')">
+                            <div><div class="gr-sym">TATAMOTORS</div><div class="gr-name">Tata Motors</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,16 C8,13 18,15 26,10 C34,5 40,6 45,3" stroke="#00B386" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹924.80</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-pos">+3.77%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('WIPRO','Wipro Ltd.','487.60')">
+                            <div><div class="gr-sym">WIPRO</div><div class="gr-name">Wipro Ltd.</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,14 C10,10 20,12 28,8 C36,5 40,4 45,2" stroke="#00B386" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹487.60</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-pos">+2.84%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('HCLTECH','HCL Technologies','1578.40')">
+                            <div><div class="gr-sym">HCLTECH</div><div class="gr-name">HCL Technologies</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,15 C8,12 16,13 24,9 C32,5 38,4 45,2" stroke="#00B386" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹1,578.40</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-pos">+2.41%</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Losers Panel -->
+                <div class="gl-panel" id="gl-losers" style="display:none;">
+                    <div class="gl-list">
+                        <div class="gl-row" onclick="ctTrackStockClick('ONGC','ONGC Ltd.','268.40')">
+                            <div><div class="gr-sym">ONGC</div><div class="gr-name">ONGC Ltd.</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,2 C8,5 16,4 24,9 C32,13 38,14 45,16" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹268.40</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-neg">−3.18%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('NTPC','NTPC Ltd.','352.70')">
+                            <div><div class="gr-sym">NTPC</div><div class="gr-name">NTPC Ltd.</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,3 C10,6 20,5 28,10 C36,14 40,15 45,17" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹352.70</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-neg">−2.74%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('MARUTI','Maruti Suzuki','12,480.50')">
+                            <div><div class="gr-sym">MARUTI</div><div class="gr-name">Maruti Suzuki</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,4 C8,7 18,6 26,11 C34,15 40,15 45,17" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹12,480</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-neg">−2.10%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('HEROMOTOCO','Hero MotoCorp','4,780.60')">
+                            <div><div class="gr-sym">HEROMOTOCO</div><div class="gr-name">Hero MotoCorp</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,3 C10,6 20,5 28,9 C36,13 40,14 45,16" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹4,780</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-neg">−1.84%</span></div>
+                        </div>
+                        <div class="gl-row" onclick="ctTrackStockClick('ITC','ITC Ltd.','428.90')">
+                            <div><div class="gr-sym">ITC</div><div class="gr-name">ITC Ltd.</div></div>
+                            <div class="gr-mid"><svg width="45" height="18" viewBox="0 0 45 18" fill="none"><path d="M0,5 C8,8 16,7 24,11 C32,14 38,15 45,16" stroke="#E74C3C" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+                            <div><div class="gr-price">₹428.90</div></div>
+                            <div style="width:54px;text-align:right;"><span class="gr-chg gr-chg-neg">−0.95%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /market-panel -->
+
+        </div>
+
+    </div><!-- /main-grid -->
+
+
+    <!-- ── POPULAR FUNDS (3-column) ─────────────── -->
+    <div class="fv-section" id="popularFundsSection">
+        <div class="fv-sec-head">
+            <div>
+                <div class="fv-sec-title">Popular Mutual Funds</div>
+                <div class="fv-sec-sub">Highest-rated funds by our users · Direct Growth plans</div>
+            </div>
+            <a class="fv-see-all" href="#">See All Funds <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+        </div>
+        <div class="popular-funds-grid">
+
+            <!-- Card 1 -->
+            <div class="fund-card" onclick="ctFundClick('Mirae Asset Large Cap Fund','Large Cap','15.23%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">Mirae Asset Mutual Fund</div>
+                    <div class="fc-name">Mirae Asset Large Cap Fund – Direct Growth</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">Equity</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Large Cap</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+15.23%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★★</div>
+                            <span class="fc-risk risk-mh">Mod. High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+14.80%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">5Y Returns</div><div class="fcv pos">+16.42%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹34,250 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('Mirae Asset Large Cap Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('Mirae Asset Large Cap Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="fund-card" onclick="ctFundClick('Parag Parikh Flexi Cap Fund','Flexi Cap','18.76%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">PPFAS Mutual Fund</div>
+                    <div class="fc-name">Parag Parikh Flexi Cap Fund – Direct Growth</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">Equity</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Flexi Cap</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+18.76%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★★</div>
+                            <span class="fc-risk risk-mh">Mod. High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+19.50%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">5Y Returns</div><div class="fcv pos">+21.14%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹58,620 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('Parag Parikh Flexi Cap Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('Parag Parikh Flexi Cap Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="fund-card" onclick="ctFundClick('Quant Small Cap Fund','Small Cap','42.15%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">Quant Mutual Fund</div>
+                    <div class="fc-name">Quant Small Cap Fund – Direct Growth</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">Equity</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Small Cap</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+42.15%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★</div>
+                            <span class="fc-risk risk-vh">Very High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+35.20%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">5Y Returns</div><div class="fcv pos">+38.60%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹22,480 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('Quant Small Cap Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('Quant Small Cap Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="fund-card" onclick="ctFundClick('SBI Small Cap Fund','Small Cap','28.90%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">SBI Mutual Fund</div>
+                    <div class="fc-name">SBI Small Cap Fund – Direct Growth</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">Equity</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Small Cap</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+28.90%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★★</div>
+                            <span class="fc-risk risk-vh">Very High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+26.80%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">5Y Returns</div><div class="fcv pos">+29.45%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹28,900 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('SBI Small Cap Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('SBI Small Cap Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="fund-card" onclick="ctFundClick('HDFC Mid-Cap Opportunities Fund','Mid Cap','28.45%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">HDFC Mutual Fund</div>
+                    <div class="fc-name">HDFC Mid-Cap Opportunities Fund – Direct</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">Equity</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Mid Cap</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+28.45%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★★</div>
+                            <span class="fc-risk risk-h">High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+24.30%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">5Y Returns</div><div class="fcv pos">+26.12%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹62,450 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('HDFC Mid-Cap Opportunities Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('HDFC Mid-Cap Opportunities Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="fund-card" onclick="ctFundClick('Axis ELSS Tax Saver Fund','ELSS','14.32%')">
+                <div class="fund-card-top">
+                    <div class="fc-house">Axis Mutual Fund</div>
+                    <div class="fc-name">Axis ELSS Tax Saver Fund – Direct Growth</div>
+                    <div class="fc-meta">
+                        <span class="fc-cat">ELSS</span><div class="fc-dot"></div>
+                        <span class="fc-cat">Tax Saving</span>
+                    </div>
+                    <div class="fc-returns-row">
+                        <div>
+                            <div class="fc-ret-val">+14.32%</div>
+                            <div class="fc-ret-label">1Y Returns</div>
+                        </div>
+                        <div class="fc-star-risk">
+                            <div class="fc-stars">★★★★</div>
+                            <span class="fc-risk risk-mh">Mod. High</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fund-card-bottom">
+                    <div class="fc-3y-row">
+                        <div class="fc-3y-item"><div class="fcl">3Y Returns</div><div class="fcv pos">+12.60%</div></div>
+                        <div class="fc-3y-item"><div class="fcl">Lock-in</div><div class="fcv">3 Years</div></div>
+                        <div class="fc-3y-item"><div class="fcl">AUM</div><div class="fcv">₹32,100 Cr</div></div>
+                    </div>
+                    <div class="fc-invest-row">
+                        <button class="fc-sip"  onclick="ctInvestClick('Axis ELSS Tax Saver Fund','SIP',event)">Start SIP</button>
+                        <button class="fc-lump" onclick="ctInvestClick('Axis ELSS Tax Saver Fund','Lumpsum',event)">Lumpsum</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ── TOP MUTUAL FUNDS TABLE ──────────────────── -->
+    <div class="fv-card fv-section" id="topMFSection">
+        <div style="padding:20px 20px 0;">
+            <div class="fv-sec-head" style="margin-bottom:0;">
+                <div>
+                    <div class="fv-sec-title">Top Mutual Funds</div>
+                    <div class="fv-sec-sub">Filtered by performance · Direct Growth plans</div>
+                </div>
+                <a class="fv-see-all" href="#">Explore All Funds <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+            </div>
+        </div>
+        <!-- Category filter tabs -->
+        <div class="mf-tabs">
+            <div class="mf-tab active" data-cat="all">All Funds</div>
+            <div class="mf-tab" data-cat="equity">Equity</div>
+            <div class="mf-tab" data-cat="debt">Debt</div>
+            <div class="mf-tab" data-cat="hybrid">Hybrid</div>
+            <div class="mf-tab" data-cat="elss">ELSS</div>
+            <div class="mf-tab" data-cat="index">Index</div>
+        </div>
+        <div class="mf-table-wrap">
+            <table class="mf-table">
+                <thead>
+                    <tr>
+                        <th>Fund</th>
+                        <th>Category</th>
+                        <th class="th-right">1Y Returns</th>
+                        <th class="th-right">3Y Returns</th>
+                        <th class="th-right">5Y Returns</th>
+                        <th>Risk</th>
+                        <th>Rating</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="mfTableBody">
+                    <tr data-cat="equity" onclick="ctFundClick('Quant Small Cap Fund','Small Cap','42.15%')">
+                        <td><div class="mf-fund-name">Quant Small Cap Fund</div><div class="mf-fund-house">Quant MF</div></td>
+                        <td><span class="mf-cat-tag cat-equity">Small Cap</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+42.15%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+35.20%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+38.60%</span></td>
+                        <td><span class="fc-risk risk-vh">Very High</span></td>
+                        <td><span class="mf-stars">★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('Quant Small Cap Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="equity" onclick="ctFundClick('Nippon India Small Cap','Small Cap','38.90%')">
+                        <td><div class="mf-fund-name">Nippon India Small Cap Fund</div><div class="mf-fund-house">Nippon India MF</div></td>
+                        <td><span class="mf-cat-tag cat-equity">Small Cap</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+38.90%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+32.10%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+34.80%</span></td>
+                        <td><span class="fc-risk risk-vh">Very High</span></td>
+                        <td><span class="mf-stars">★★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('Nippon India Small Cap Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="equity" onclick="ctFundClick('Parag Parikh Flexi Cap Fund','Flexi Cap','18.76%')">
+                        <td><div class="mf-fund-name">Parag Parikh Flexi Cap Fund</div><div class="mf-fund-house">PPFAS MF</div></td>
+                        <td><span class="mf-cat-tag cat-equity">Flexi Cap</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+18.76%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+19.50%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+21.14%</span></td>
+                        <td><span class="fc-risk risk-mh">Mod. High</span></td>
+                        <td><span class="mf-stars">★★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('Parag Parikh Flexi Cap Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="elss" onclick="ctFundClick('Mirae Asset ELSS Tax Saver','ELSS','16.45%')">
+                        <td><div class="mf-fund-name">Mirae Asset ELSS Tax Saver Fund</div><div class="mf-fund-house">Mirae Asset MF</div></td>
+                        <td><span class="mf-cat-tag cat-elss">ELSS</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+16.45%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+15.20%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+17.80%</span></td>
+                        <td><span class="fc-risk risk-mh">Mod. High</span></td>
+                        <td><span class="mf-stars">★★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('Mirae Asset ELSS Tax Saver Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="hybrid" onclick="ctFundClick('HDFC Balanced Advantage Fund','Hybrid','14.20%')">
+                        <td><div class="mf-fund-name">HDFC Balanced Advantage Fund</div><div class="mf-fund-house">HDFC MF</div></td>
+                        <td><span class="mf-cat-tag cat-hybrid">Balanced</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+14.20%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+13.80%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+14.60%</span></td>
+                        <td><span class="fc-risk risk-mh">Mod. High</span></td>
+                        <td><span class="mf-stars">★★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('HDFC Balanced Advantage Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="index" onclick="ctFundClick('UTI Nifty 50 Index Fund','Index','14.82%')">
+                        <td><div class="mf-fund-name">UTI Nifty 50 Index Fund – Direct</div><div class="mf-fund-house">UTI MF</div></td>
+                        <td><span class="mf-cat-tag cat-index">Index</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+14.82%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+14.20%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+15.10%</span></td>
+                        <td><span class="fc-risk risk-mh">Mod. High</span></td>
+                        <td><span class="mf-stars">★★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('UTI Nifty 50 Index Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="debt" onclick="ctFundClick('HDFC Corporate Bond Fund','Debt','7.45%')">
+                        <td><div class="mf-fund-name">HDFC Corporate Bond Fund – Direct</div><div class="mf-fund-house">HDFC MF</div></td>
+                        <td><span class="mf-cat-tag cat-debt">Debt</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+7.45%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+6.80%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+7.12%</span></td>
+                        <td><span class="fc-risk risk-l">Low</span></td>
+                        <td><span class="mf-stars">★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('HDFC Corporate Bond Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                    <tr data-cat="debt" onclick="ctFundClick('SBI Magnum Gilt Fund','Debt','7.12%')">
+                        <td><div class="mf-fund-name">SBI Magnum Gilt Fund – Direct</div><div class="mf-fund-house">SBI MF</div></td>
+                        <td><span class="mf-cat-tag cat-debt">Gilt</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+7.12%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+6.40%</span></td>
+                        <td class="td-right"><span class="mf-ret-p">+6.90%</span></td>
+                        <td><span class="fc-risk risk-l">Low</span></td>
+                        <td><span class="mf-stars">★★★★</span></td>
+                        <td><button class="mf-invest-btn" onclick="event.stopPropagation();ctInvestClick('SBI Magnum Gilt Fund','SIP',event)">Invest</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="padding:10px 20px 14px;">
+            <p style="font-size:11px;color:var(--t4);">* Past performance is not indicative of future returns. Mutual fund investments are subject to market risks.</p>
+        </div>
+    </div>
+
+
+    <!-- ── UPCOMING IPOs ───────────────────────────── -->
+    <div class="fv-section">
+        <div class="fv-sec-head">
+            <div>
+                <div class="fv-sec-title">Upcoming IPOs</div>
+                <div class="fv-sec-sub">Apply before subscription closes</div>
+            </div>
+            <a class="fv-see-all" href="#">All IPOs <i class="fas fa-chevron-right" style="font-size:10px;"></i></a>
+        </div>
+        <div class="ipo-grid">
+
+            <div class="ipo-card" onclick="ctIpoClick('NexGen Tech Solutions','Open')">
+                <span class="ipo-badge ipo-open"><span style="width:6px;height:6px;border-radius:50%;background:var(--positive);display:inline-block;"></span>Open Now</span>
+                <div class="ipo-name">NexGen Tech Solutions Ltd.</div>
+                <div class="ipo-sub">Technology · SME IPO &nbsp;·&nbsp; Closes: May 19, 2026</div>
+                <div class="ipo-price-row">
+                    <div>
+                        <div class="ipo-price">₹240 – ₹252</div>
+                        <div class="ipo-sub2">Price band · Lot: 59 shares</div>
+                    </div>
+                    <button class="ipo-apply-btn" onclick="event.stopPropagation(); ctIpoClick('NexGen Tech Solutions','Apply')">Apply</button>
+                </div>
+            </div>
+
+            <div class="ipo-card" onclick="ctIpoClick('GreenPath Infra','Upcoming')">
+                <span class="ipo-badge ipo-upcoming"><span style="width:6px;height:6px;border-radius:50%;background:var(--warning);display:inline-block;"></span>Opens May 22</span>
+                <div class="ipo-name">GreenPath Infrastructure Ltd.</div>
+                <div class="ipo-sub">Infrastructure · Mainboard &nbsp;·&nbsp; ₹1,200 Cr issue</div>
+                <div class="ipo-price-row">
+                    <div>
+                        <div class="ipo-price">₹145 – ₹153</div>
+                        <div class="ipo-sub2">Expected price band</div>
+                    </div>
+                    <button class="ipo-apply-btn" style="background:var(--t4);cursor:default;" disabled>Notify Me</button>
+                </div>
+            </div>
+
+            <div class="ipo-card" onclick="ctIpoClick('RapidHealth Pharma','Listed')">
+                <span class="ipo-badge ipo-listed"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary);display:inline-block;"></span>Listed Today</span>
+                <div class="ipo-name">RapidHealth Pharma Ltd.</div>
+                <div class="ipo-sub">Pharma · May 17, 2026 listing</div>
+                <div class="ipo-price-row">
+                    <div>
+                        <div class="ipo-price">₹342.50</div>
+                        <div class="ipo-sub2">Issue price: ₹290</div>
+                    </div>
+                    <span class="ipo-gain pos" style="background:var(--positive-bg);">+18.1% listing gain</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ── CT TESTING REFERENCE ──────────────────── -->
+    <div class="ct-test-panel fv-section">
+        <div class="ctp-head">
+            <i class="fas fa-flask" style="color:var(--brand);font-size:20px;"></i>
+            <div class="ctp-title">CleverTap Testing Reference</div>
+        </div>
+        <p class="ctp-sub">
+            Use <strong>Web Native Display</strong> campaigns in CT with the KV payloads below.
+            All four sections on this page are CT-targetable. No target div ID needed — the JS handler routes by the <code style="background:var(--brand-light);padding:1px 6px;border-radius:3px;font-size:12px;">topic</code> key.
+        </p>
+        <div class="ctp-grid">
+            <div class="ctp-card">
+                <div class="ctp-label" style="color:#00B386;"><i class="fas fa-chart-line"></i> Last Visited Stock</div>
+                <div class="ctp-json">{
+  <span class="json-key">"topic"</span>:       <span class="json-str">"lastVisitedStock"</span>,
+  <span class="json-key">"stockSymbol"</span>: <span class="json-str">"HDFCBANK"</span>,
+  <span class="json-key">"stockName"</span>:   <span class="json-str">"HDFC Bank Ltd."</span>,
+  <span class="json-key">"price"</span>:       <span class="json-str">"1,672.30"</span>,
+  <span class="json-key">"change"</span>:      <span class="json-str">"+12.45"</span>,
+  <span class="json-key">"changePct"</span>:   <span class="json-str">"+0.75%"</span>,
+  <span class="json-key">"high52w"</span>:     <span class="json-str">"1,794.00"</span>,
+  <span class="json-key">"low52w"</span>:      <span class="json-str">"1,363.55"</span>,
+  <span class="json-key">"mktCap"</span>:      <span class="json-str">"₹12.7T"</span>,
+  <span class="json-key">"pe"</span>:          <span class="json-num">19.2</span>,
+  <span class="json-key">"sector"</span>:      <span class="json-str">"Banking"</span>,
+  <span class="json-key">"volume"</span>:      <span class="json-str">"14.2M"</span>,
+  <span class="json-key">"trend"</span>:       <span class="json-str">"up"</span>
+}</div>
+            </div>
+            <div class="ctp-card">
+                <div class="ctp-label" style="color:#F5A623;"><i class="fas fa-triangle-exclamation"></i> Regulatory Banner</div>
+                <div class="ctp-json">{
+  <span class="json-key">"topic"</span>:       <span class="json-str">"regulatoryBanner"</span>,
+  <span class="json-key">"type"</span>:        <span class="json-str">"warning"</span>,
+  <span class="json-key">"icon"</span>:        <span class="json-str">"fa-triangle-exclamation"</span>,
+  <span class="json-key">"heading"</span>:     <span class="json-str">"SEBI Notice"</span>,
+  <span class="json-key">"message"</span>:     <span class="json-str">"KYC update required by March 31. Complete now to avoid trading restrictions."</span>,
+  <span class="json-key">"ctaText"</span>:     <span class="json-str">"Update KYC"</span>,
+  <span class="json-key">"ctaUrl"</span>:      <span class="json-str">"#kyc"</span>,
+  <span class="json-key">"dismissible"</span>: <span class="json-str">"true"</span>
+}</div>
+            </div>
+            <div class="ctp-card">
+                <div class="ctp-label" style="color:#5076EE;"><i class="fas fa-clock-rotate-left"></i> Recently Viewed Stocks</div>
+                <div class="ctp-json">{
+  <span class="json-key">"topic"</span>:   <span class="json-str">"recentlyViewed"</span>,
+  <span class="json-key">"stocks"</span>: <span class="json-str">"[
+    {\"symbol\":\"RELIANCE\",
+     \"name\":\"Reliance Industries\",
+     \"price\":\"2847.50\",
+     \"change\":\"+0.83%\",
+     \"positive\":true,
+     \"trend\":\"up\"},
+    {\"symbol\":\"INFY\",
+     \"name\":\"Infosys Ltd.\",
+     \"price\":\"1423.55\",
+     \"change\":\"-0.42%\",
+     \"positive\":false,
+     \"trend\":\"down\"}
+  ]"</span>
+}</div>
+            </div>
+            <div class="ctp-card">
+                <div class="ctp-label" style="color:#9B59B6;"><i class="fas fa-rectangle-ad"></i> Top Ad Banner</div>
+                <div class="ctp-json">{
+  <span class="json-key">"topic"</span>:    <span class="json-str">"topAdBanner"</span>,
+  <span class="json-key">"bgColor"</span>:  <span class="json-str">"linear-gradient(135deg, #7B2FF7,#F107A3)"</span>,
+  <span class="json-key">"badge"</span>:    <span class="json-str">"Limited Offer"</span>,
+  <span class="json-key">"heading"</span>:  <span class="json-str">"Zero Brokerage – 30 Days"</span>,
+  <span class="json-key">"subtext"</span>:  <span class="json-str">"Open your FinVest account today."</span>,
+  <span class="json-key">"ctaText"</span>:  <span class="json-str">"Open Account"</span>,
+  <span class="json-key">"ctaUrl"</span>:   <span class="json-str">"#open-account"</span>,
+  <span class="json-key">"ctaColor"</span>: <span class="json-str">"#7B2FF7"</span>
+}</div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /fv-page -->
+
+
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════════════ -->
+<footer class="fv-footer">
+    <div class="fv-footer-inner">
+        <div class="fv-footer-grid">
+            <div>
+                <div class="ff-brand-name">
+                    <div style="width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--brand),#00D4A3);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:14px;">F</div>
+                    FinVest
+                </div>
+                <div class="ff-brand-desc">A demo stock-broking and mutual funds platform built for CleverTap Web SDK testing. Inspired by Groww &amp; Upstox. Built by Jitendra Sahoo.</div>
+                <div class="ff-socials">
+                    <div class="ff-social"><i class="fab fa-twitter"></i></div>
+                    <div class="ff-social"><i class="fab fa-instagram"></i></div>
+                    <div class="ff-social"><i class="fab fa-linkedin"></i></div>
+                    <div class="ff-social"><i class="fab fa-youtube"></i></div>
+                </div>
+            </div>
+            <div class="ff-col">
+                <h4>Invest</h4>
+                <a href="#">Stocks</a>
+                <a href="#">Mutual Funds</a>
+                <a href="#">IPO</a>
+                <a href="#">Fixed Deposit</a>
+                <a href="#">NPS</a>
+            </div>
+            <div class="ff-col">
+                <h4>Tools</h4>
+                <a href="#">SIP Calculator</a>
+                <a href="#">Compare Funds</a>
+                <a href="#">Portfolio Tracker</a>
+                <a href="#">Tax Calculator</a>
+                <a href="#">Returns Estimator</a>
+            </div>
+            <div class="ff-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog</a>
+                <a href="#">Press Kit</a>
+            </div>
+            <div class="ff-col">
+                <h4>CT Hub</h4>
+                <a href="/TestWeb/index.html">← CT Main Page</a>
+                <a href="/TestWeb/inapp.html">In-App Templates</a>
+                <a href="/TestWeb/jbuy.html">JBuy (WVE Demo)</a>
+                <a href="/TestWeb/finvest.html">FinVest (this page)</a>
+            </div>
+        </div>
+        <hr class="ff-divider">
+        <p class="ff-sebi">
+            FinVest is a <strong>demo website</strong> for CleverTap testing only — not a real SEBI-registered broker or financial product.
+            &nbsp;·&nbsp; SEBI Registration (Demo): INZ000XXXXXX &nbsp;·&nbsp; AMFI ARN: XXXXXX<br>
+            Investments are subject to market risks. Read all scheme-related documents carefully before investing. Past performance does not guarantee future results.
+        </p>
+    </div>
+</footer>
+
+<script src="js/finvest.js"></script>
+</body>
+</html>
